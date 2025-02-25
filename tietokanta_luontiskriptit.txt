@@ -1,6 +1,6 @@
 -- 1. Tämä luo meidän pelin tietokannan
 
-CREATE DATABASE lentopeli;
+CREATE DATABASE amazingflightrace;
 
 -- 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan
 
