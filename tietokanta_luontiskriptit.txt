@@ -32,4 +32,30 @@ CREATE TABLE airport (
     airport_visited BOOLEAN DEFAULT FALSE
 );
 
+LOCK TABLES `airport` WRITE;
+/*!40000 ALTER TABLE `airport` DISABLE KEYS */;
+INSERT INTO `airport` VALUES (2434,'EGLL','London Heathrow Airport',51.4706,-0.461941,83,FALSE),
+(4185,'LFPG','Charles de Gaulle International Airport',49.012798,2.55,392,FALSE),
+(2513,'EHAM','Amsterdam Airport Schiphol',52.308601,4.76389,-11,FALSE),
+(2212,'EDDF','Frankfurt am Main Airport',50.036249,8.559294,364,FALSE),
+(4372,'LIRF','Rome–Fiumicino Leonardo da Vinci Interna',41.804532,12.251998,13,FALSE),
+(4461,'LPPT','Humberto Delgado Airport Lisbon Portela',38.7813,-9.13592,374,FALSE),
+(4035,'LEPA','Palma de Mallorca Airport',39.551701,2.73881,27,FALSE),
+(4251,'LGAV','Athens Eleftherios Venizelos Internation',37.936401,23.9445,308,FALSE),
+(4434,'LOWW','Vienna International Airport',48.110298,16.5697,600,FALSE),
+(4505,'LSZH','Zürich Airport',47.458056,8.548056,1417,FALSE),
+(2542,'EKCH','Copenhagen Kastrup Airport',55.617900848389,12.656000137329,17,FALSE),
+(2398,'EGCC','Manchester Airport',53.349375,-2.279521,257,FALSE),
+(2578,'ENGM','Oslo Airport, Gardermoen',60.193901,11.1004,681,FALSE),
+(2155,'EBBR','Brussels Airport',50.901401519800004,4.48443984985,184,FALSE),
+(2701,'ESSA','Stockholm-Arlanda Airport',59.651901245117,17.918600082397,FALSE),
+(2637,'EPWA','Warsaw Chopin Airport',52.1656990051,20.967100143399996,362,FALSE),
+(4296,'LHBP','Budapest Liszt Ferenc International Airp',47.42976,19.261093,495,FALSE),
+(2307,'EFHK','Helsinki Vantaa Airport',60.3172,24.963301,179,FALSE),
+(3972,'LATI','Tirana International Airport Mother Tere',41.4146995544,19.7206001282,126,FALSE),
+(123,'BIKF','Keflavik International Airport',63.985001,-22.6056,171,FALSE),
+(2758,'EVRA','Riga International Airport',56.92359924316406,23.971099853515625,36,FALSE),
+/*!40000 ALTER TABLE `airport` ENABLE KEYS */;
+UNLOCK TABLES;
+
 /* */
