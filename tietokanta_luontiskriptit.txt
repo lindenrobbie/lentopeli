@@ -31,3 +31,5 @@ CREATE TABLE airport (
     airport_longitude DECIMAL(9, 6),
     airport_visited BOOLEAN DEFAULT FALSE
 );
+
+/* */
