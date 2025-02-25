@@ -21,3 +21,13 @@ CREATE TABLE scoreboard (
     scoreboard_finalscore INT NOT NULL
 );
 
+/* 4. Luodaan airport pöytä johon tulee lentokentän tiedot */
+
+CREATE TABLE airport (
+    airport_ID INT AUTO_INCREMENT PRIMARY KEY,
+    airport_name VARCHAR(255) NOT NULL,
+    airport_country VARCHAR(100),
+    airport_latitude DECIMAL(9, 6),
+    airport_longitude DECIMAL(9, 6),
+    airport_visited BOOLEAN DEFAULT FALSE
+);
