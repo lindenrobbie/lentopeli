@@ -10,3 +10,5 @@ CREATE TABLE game (
     game_playerscore INT NOT NULL,
     game_playerinventory TEXT
 );
+
+-- 3.
