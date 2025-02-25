@@ -1,1 +1,12 @@
-CREATE DATABASE lentopeli
+-- 1. Tämä luo meidän pelin tietokannan
+
+CREATE DATABASE lentopeli;
+
+-- 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan
+
+CREATE TABLE game (
+    game_ID INT AUTO_INCREMENT PRIMARY KEY,
+    game_playername VARCHAR(100) NOT NULL,
+    game_playerscore INT NOT NULL,
+    game_playerinventory TEXT
+);
