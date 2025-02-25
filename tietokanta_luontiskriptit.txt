@@ -11,11 +11,11 @@ CREATE TABLE game (
     game_playerinventory TEXT
 );
 
-/* 3. Luodaan scoreboard pöytä johon tallentuun pelin lopussa pelaajan nimi ja loppupisteet.
+/* 3. Luodaan scoreboard pöytä johon tallentuun pelin lopussa pelaajan nimi ja loppupisteet. */
+
 CREATE TABLE scoreboard (
 	scoreboard_ID INT AUTO_INCREMENT PRIMARY KEY,
     scoreboard_playername VARCHAR(100) NOT NULL,
     scoreboard_finalscore INT NOT NULL
 );
-*/
 
