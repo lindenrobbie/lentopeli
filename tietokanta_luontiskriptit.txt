@@ -1,8 +1,8 @@
--- 1. Tämä luo meidän pelin tietokannan
+/* 1. Tämä luo meidän pelin tietokannan */
 
-CREATE DATABASE amazingflightrace;
+CREATE DATABASE lentopeli;
 
--- 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan
+/* 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan*/
 
 CREATE TABLE game (
     game_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -11,4 +11,11 @@ CREATE TABLE game (
     game_playerinventory TEXT
 );
 
--- 3.
+/* 3. Luodaan scoreboard pöytä johon tallentuun pelin lopussa pelaajan nimi ja loppupisteet.
+CREATE TABLE scoreboard (
+	scoreboard_ID INT AUTO_INCREMENT PRIMARY KEY,
+    scoreboard_playername VARCHAR(100) NOT NULL,
+    scoreboard_finalscore INT NOT NULL
+);
+*/
+
