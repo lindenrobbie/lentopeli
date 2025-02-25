@@ -3,6 +3,7 @@
 CREATE DATABASE lentopeli;
 
 /* 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan*/
+/* -  Tämä pöytä tallentaa väliaikasesti pelaajan tiedot, jos peli tulisi sulkea niin täältä haetaan väliaikaset tiedot takaisin että peli voi jatkua */
 
 CREATE TABLE game (
     game_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -12,6 +13,7 @@ CREATE TABLE game (
 );
 
 /* 3. Luodaan scoreboard pöytä johon tallentuun pelin lopussa pelaajan nimi ja loppupisteet. */
+/* - Tässä on scoreboard, eli pistetaulukko */
 
 CREATE TABLE scoreboard (
 	scoreboard_ID INT AUTO_INCREMENT PRIMARY KEY,
