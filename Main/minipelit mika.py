@@ -51,22 +51,21 @@ def carddraw():
             print(f"Pelaaja (tähän pelaajan nimimerkki) voitti Hugh Jackmanin.\nPalkinnoksi sait wolverinen muoviset raateluterät. Oiva lahja siskon pojalle! Pisteesi kerrotaan kertoimella 1.2!")
 
 
-points=100
-repeats=0
+
 def words():
-      return
-print("Pikkuvanha Elviira-Elise haluaa näpäyttää sinua ja pyytää laittamaan seuraavat sanat käänteiseen järjestykseen takaperin.\n"
-      "'Python on kivaa vai mita'")
-while True:
-      add=(input("Anna vastaus: "))
-      if add =="atim iav aavik no nohtyP":
-            print(f"Onnistuit ja saat {points} pistettä, Pikkuvanha katsoo huulipyöreenä ja taputtaa kunnioittavasti")
-            break
-      else:
-            repeats+=1
-            points -=20
-            print("Menetit potista pisteitä ja yrityä uudelleen","Yrityksiä",repeats, "Pisteitä saatavilla",points)
-      if repeats == 5:
-            print("Et onnistunut voi pöhköliini <3 Pikkuvanha osasi sua paremmin!")
-            break
-words()
+    points=100
+    repeats=0
+    print("Pikkuvanha Elviira-Elise haluaa näpäyttää sinua ja pyytää laittamaan seuraavat sanat käänteiseen järjestykseen takaperin.\n"
+        "'Python on kivaa vai mita'")
+    while True:
+        add=(input("Anna vastaus: "))
+        if add =="atim iav aavik no nohtyP":
+                print(f"Onnistuit ja saat {points} pistettä, Pikkuvanha katsoo huulipyöreenä ja taputtaa kunnioittavasti")
+                break
+        else:
+                repeats+=1
+                points -=20
+                print("Menetit potista pisteitä ja yrityä uudelleen","Yrityksiä",repeats, "Pisteitä saatavilla",points)
+        if repeats == 5:
+                print("Et onnistunut voi pöhköliini <3 Pikkuvanha osasi sua paremmin!")
+                break
