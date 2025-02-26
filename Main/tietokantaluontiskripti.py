@@ -1,6 +1,6 @@
 import mysql.connector
 
-# Connect to MySQL
+#Yhdistää tietokantaan ilman että lentopeli tietokanta on olemassa, olettaa että login on root/root
 connection = mysql.connector.connect(
     host='127.0.0.1',
     port=3306,
@@ -9,14 +9,15 @@ connection = mysql.connector.connect(
     autocommit=True
 )
 
+# db_modules:ista, syöttää SQL query:n
 def db_command(command):
-    """Execute a single SQL command."""
     cursor = connection.cursor()
     cursor.execute(command)
     return
 
+# Kaikki tarvittavat SQL query:t pelin tietokannan asennukseen
+
 def install():
-    """Return a list of SQL commands for database installation."""
     return [
         "CREATE DATABASE IF NOT EXISTS lentopeli;",
         "USE lentopeli;",
@@ -64,16 +65,27 @@ def install():
         ON DUPLICATE KEY UPDATE airport_ID = airport_ID;"""
     ]
 
+#Toistaa kunnes syöttää tyhjän kentän, A = Asentaa, P = Poistaa
+
 while True:
+
     request = input('Haluatko resetoida, asentaa, vai poistaa tietokannan?: A/P ')
+
+    #Tyhjä kenttä, lopettaa ohjelman
     if request == '':
         break
-    elif request == 'A':
+
+    #Asennus
+    elif request == 'A': #
         for query in install():
             db_command(query)
         print("Tietokanta on nyt asennettu.")
+
+    #Poisto
     elif request == 'P':
         db_command("DROP DATABASE IF EXISTS lentopeli;")
         print("Tietokanta on nyt poistettu.")
+
+    #Jos syöte ei oo A/P tai ei mitään niin toistorakenne jatkuu
     else:
         print("Syötä validi pyyntö (A/P)")
