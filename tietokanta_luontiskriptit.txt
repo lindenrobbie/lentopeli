@@ -3,6 +3,7 @@
 CREATE DATABASE lentopeli;
 
 /* 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan*/
+/* -  Muista valita database tässä väissä "USE lentopeli;"
 /* -  Tämä pöytä tallentaa väliaikasesti pelaajan tiedot, jos peli tulisi sulkea niin täältä haetaan väliaikaset tiedot takaisin että peli voi jatkua */
 
 CREATE TABLE game (
