@@ -13,9 +13,13 @@ connection = mysql.connector.connect(
 def db_command(command):
     cursor = connection.cursor()
     cursor.execute(command)
-    results = cursor.fetchall
-    if cursor.fetchall != None:
-        return results  # ei palauta mitään jos käyttää esim. INSERT komentoo
+
+    if command.strip().upper().startswith("SELECT") or command.strip().upper().startswith("DESCRIBE"):
+        results = cursor.fetchall()
+        if results:
+            return results
+        else:
+            return None
 
 
 # muokkaa pelaajan pistemäärää, yhteen- tai vähennyslasku
