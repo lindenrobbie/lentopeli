@@ -20,7 +20,7 @@ def db_command(command):
 def modify_score(id, amount):
     db_command(f"UPDATE game SET game_playerscore = game_playerscore + {amount} WHERE game_ID = {id}")
 
-
+#kertoo käyttäjän pisteet
 def multiply_score(id, amount):
     score = db_command(f"SELECT game_playerscore FROM game WHERE game_ID = {id}")
     score = score[0][0] * amount
