@@ -64,3 +64,5 @@ def add_player():
         name = input("Syötä nimi: ")
 
     db_command(f"INSERT INTO game (game_playername, game_playerscore) VALUES ('{name}', 1000)")
+
+    #
