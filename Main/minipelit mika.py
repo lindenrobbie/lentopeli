@@ -59,7 +59,7 @@ print("Pikkuvanha Elviira-Elise haluaa näpäyttää sinua ja pyytää laittamaa
       "'Python on kivaa vai mita'")
 while True:
       add=(input("Anna vastaus: "))
-      if add =="atsunim ikaniav aon no nohtyp":
+      if add =="atim iav aavik no nohtyP":
             print(f"Onnistuit ja saat {points} pistettä, Pikkuvanha katsoo huulipyöreenä ja taputtaa kunnioittavasti")
             break
       else:
