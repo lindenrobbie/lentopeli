@@ -5,7 +5,7 @@ def minigame_pummi():
 
     print("")
     print("Näät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
-    print('Annatko pummille (x määrä) rahaa? ')
+    print('Annatko pummille (x määrä) rahaa? Kyllä/En')
 
     while True:
 
