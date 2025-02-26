@@ -27,6 +27,7 @@ def minigame_pummi():
 
 
             if win == True:
+                print("")
                 print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestä.')
                 break
             #insert a win reward here
