@@ -1,16 +1,15 @@
-from tk_moduulit import hae_tietokannasta
+import db_modules
 
 def print_scoreboard():
 
-    komento = 'SELECT scoreboard_playername, scoreboard_finalscore FROM scoreboard ORDER BY scoreboard_finalscore DESC LIMIT 10;'
+    command = 'SELECT scoreboard_playername, scoreboard_finalscore FROM scoreboard ORDER BY scoreboard_finalscore DESC LIMIT 10;'
 
-    results = hae_tietokannasta(komento)
+    results = db_modules.db_command(command)
 
     print("")
     print("===== Leaderboard =====")
 
     if results:
-
 
         print("")
 
@@ -23,4 +22,5 @@ def print_scoreboard():
     else:
         print("")
         print("Näyttää tyhjältä...")
+
 print_scoreboard()
