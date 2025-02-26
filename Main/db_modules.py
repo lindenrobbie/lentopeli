@@ -21,6 +21,12 @@ def modify_score(id, amount):
     db_command(f"UPDATE game SET game_playerscore = game_playerscore + {amount} WHERE game_ID = {id}")
 
 
+def multiply_score(id, amount):
+    score = db_command(f"SELECT game_playerscore FROM game WHERE game_ID = {id}")
+    score = score[0][0] * amount
+    db_command(f"UPDATE game SET game_playerscore = {round(score)} WHERE game_ID = {id}")
+
+
 #arpoo lentokentän, jossa pelaaja ei ole käynyt
 def select_airport():
     while True:
