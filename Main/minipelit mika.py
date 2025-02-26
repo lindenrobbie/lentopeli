@@ -33,7 +33,7 @@ if player1==player2:
         print("Voihan mielipaha arvasit väärin, hävisit tolle charmantille aussille!")
 if player1>player2:
     print(f"Hugh Jackmanin kortti: {player1} sinun korttisi {player2}")
-    print(f"Hugh Jackman voitti kortilla: {player1}")
+    print(f"Hugh Jackman voitti kortilla: {player1}. Äläkä ala mököttää, tapasit sentään charmantin julkkiksen ^_^  !")
 else:
-    print(f"Pelaaja (tähän pelaajan nimimerkki) voitti kortilla: {player2} Hugh Jackmanin {player1} kortin.\nPalkinnoksi pisteesi kerrotaan kertoimella 1.2!")
+    print(f"Pelaaja (tähän pelaajan nimimerkki) voitti Hugh Jackmanin.\nPalkinnoksi sait wolverinen muoviset raateluterät. Oiva lahja siskon pojalle! Pisteesi kerrotaan kertoimella 1.2!")
 
