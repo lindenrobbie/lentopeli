@@ -48,6 +48,7 @@ def minigame_frankfurt():
     print ('Vuokraat auton lentokentältä jotta pääset airbnb majoitukseesi')
     print ('Jostain syystä frankfurtissa on tarjolla vain BMW, Mercedes-benz tai Porsche')
 
+    #kysymys 1
     while True:
         answer = input('Mikä näistä valmistajista on valmistanut ensimmäisenä pidetyn modernin auton?\n\n1. BMW\n2. Mercedes-benz\n3. Porsche\n\nVastauksesi: ')
 
@@ -59,6 +60,33 @@ def minigame_frankfurt():
             break
         else:
             print('Syötä numerovaihtoehto 1,2 tai 3!')
+
+    #kysymys 2
+    while True:
+        answer = input('Kuinka pitkän matkan BMW driftasi maailmanennätysksen rikkoneessa ajassa 8 tuntia\n\n1. 374 km\n2. 618 km\n3. 112km\n\nVastauksesi: ')
+
+        if answer == '1':
+            print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            break
+        elif answer == '2' or answer == '3':
+            print('Vastasit väärin. Et ansainnut pisteitä')
+            break
+        else:
+            print('Syötä numerovaihtoehto 1,2 tai 3!')
+
+    #kysymys 3
+    while True:
+        answer = input('Millä seuraavista porschen malleista on nurburgringin sports cars luokan rataennätys?\n\n1. Porsche 911 GT3 RS\n2. Porsche 991  GT2 RS (Manthey performance kit)\n3. Porsche 718 GT4 RS (Manthey kit)\n\nVastauksesi: ')
+
+        if answer == '2':
+            print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            break
+        elif answer == '1' or answer == '3':
+            print('Vastasit väärin. Et ansainnut pisteitä')
+            break
+        else:
+            print('Syötä numerovaihtoehto 1,2 tai 3!')
+
 
 
 
