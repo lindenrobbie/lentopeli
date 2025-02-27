@@ -1,6 +1,6 @@
-import mysql.connector, random
+import mariadb, random
 
-connection = mysql.connector.connect(
+connection = mariadb.connect(
     host='127.0.0.1',
     port=3306,
     database='lentopeli',
@@ -13,13 +13,10 @@ connection = mysql.connector.connect(
 def db_command(command):
     cursor = connection.cursor()
     cursor.execute(command)
-
-    if command.strip().upper().startswith("SELECT") or command.strip().upper().startswith("DESCRIBE"):
-        results = cursor.fetchall()
-        if results:
-            return results
-        else:
-            return None
+    try:
+        return cursor.fetchall()
+    except:
+        pass
 
 
 # muokkaa pelaajan pistemäärää, yhteen- tai vähennyslasku
@@ -68,5 +65,3 @@ def add_player():
         name = input("Syötä nimi: ")
 
     db_command(f"INSERT INTO game (game_playername, game_playerscore) VALUES ('{name}', 1000)")
-
-    #
