@@ -2,6 +2,7 @@ import random
 
 #Olet myöhässä koneestasi
 def minigame_late():
+    print ('')
     print ("Olet myöhästymässä lentokoneestasi!")
     print ("Joudut improvisoimaan jotta kerkeät lennolle")
     print ("Valitse jokin seuraavista vaihtoehdoista:")
@@ -38,8 +39,34 @@ def minigame_late():
             else:
                 print ('Syötä numerovaihtoehto 1,2 tai 3!')
 
+#minigame_late()
 
 
 
 
-minigame_late()
+def minigame_frankfurt():
+    print ('Vuokraat auton lentokentältä jotta pääset airbnb majoitukseesi')
+    print ('Jostain syystä frankfurtissa on tarjolla vain BMW, Mercedes-benz tai Porsche')
+
+    while True:
+        answer = input('Mikä näistä valmistajista on valmistanut ensimmäisenä pidetyn modernin auton?\n\n1. BMW\n2. Mercedes-benz\n3. Porsche\n\nVastauksesi: ')
+
+        if answer == '2':
+            print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            break
+        elif answer == '1' or answer == '3':
+            print('Vastasit väärin. Et ansainnut pisteitä')
+            break
+        else:
+            print('Syötä numerovaihtoehto 1,2 tai 3!')
+
+
+
+
+
+#print ('Oikein vastattu! Ansaitsit 25 pistettä.')
+#print ('Vastasit väärin. Et ansainnut pisteitä')
+#print('Syötä numerovaihtoehto 1,2 tai 3!')
+
+minigame_frankfurt()
+
