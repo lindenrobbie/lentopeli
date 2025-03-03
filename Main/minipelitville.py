@@ -1,6 +1,6 @@
 import random
 
-#Olet myöhässä koneestasi
+#Minipeli 1
 def minigame_late():
     print ('')
     print ("Olet myöhästymässä lentokoneestasi!")
@@ -43,7 +43,7 @@ def minigame_late():
 
 
 
-
+#Minipeli 2
 def minigame_frankfurt():
     print ('Vuokraat auton lentokentältä jotta pääset airbnb majoitukseesi')
     print ('Jostain syystä frankfurtissa on tarjolla vain BMW, Mercedes-benz tai Porsche')
@@ -87,6 +87,71 @@ def minigame_frankfurt():
         else:
             print('Syötä numerovaihtoehto 1,2 tai 3!')
 
+#minigame_frankfurt()
+
+
+
+#Minipeli 3
+def minigame_stockholm():
+    print("Eksyit laskettelemaan perinteistä telemarkkia!")
+    print('Tavoitteenasi on laskea rinne alas saakka väistellen esteitä')
+    start=input('Paina enter aloittaaksesi:')
+
+    while start != '':
+        start = input('Paina enter aloittaaksesi:')
+
+    rounds= 0
+    while rounds <= 5:
+        obst= random.randint(1,3)
+
+        if obst == 1:
+            treeput= input('Edessäsi on puu. Väistä vasemmalta painamalla A tai oikealta painamalla D: ')
+            if treeput == 'd':
+                print('Väistit puun ')
+                rounds += 1
+            else:
+                print('Ajauduit ulos rinteeltä ja kaaduit')
+                break
+
+        if obst == 2:
+            treeput= input('Tielläsi on kivi. Hyppää painamalla H tai kyyristy painamalla K: ')
+            if treeput == 'h':
+                print('Hyppäsit kiven yli!')
+                rounds += 1
+            else:
+                print('Kaaduit kiveen')
+                break
+
+        if obst == 3:
+            treeput= input('Edessäsi roikkuu oksa matalalla. Kyyristy painamalla K tai hyppää painamalla H: ')
+            if treeput == 'k':
+                print('Mahduit oksan ali ja jatkat matkaa!')
+                rounds += 1
+            else:
+                print('Osuit oksaan ja loukkaannuit')
+                break
+
+    if rounds >= 5:
+        print('Pääsit turvallisesti afterski juhliin!')
+
+    else:
+        print('Et päässyt alas saakka joten et saa pisteitä.')
+
+
+
+
+
+
+
+
+
+
+
+minigame_stockholm()
+
+    
+
+
 
 
 
@@ -96,5 +161,5 @@ def minigame_frankfurt():
 #print ('Vastasit väärin. Et ansainnut pisteitä')
 #print('Syötä numerovaihtoehto 1,2 tai 3!')
 
-minigame_frankfurt()
+
 
