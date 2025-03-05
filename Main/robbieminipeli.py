@@ -30,8 +30,8 @@ def minigame_roulette():
     print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
     print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    pisteet = 100
-    pelit = 0
+    points = 100
+    games = 0
 
     while True:
         print("")
@@ -43,10 +43,10 @@ def minigame_roulette():
 
     if r == 'En':
         print("\nOlet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.")
-        pisteet += 50
+        points += 50
         print('+50 Pistettä')
         print('Jatkat matkaa seuraavaan kenttään...')
-        print(f'Pisteesi ovat nyt: {pisteet}')
+        print(f'Pisteesi ovat nyt: {points}')
         return
 
     def roulette_odds():
@@ -62,9 +62,9 @@ def minigame_roulette():
             return "green"
 
     print("\nKasinon työntekijä pyytää sinulta panosta.")
-    print(f"Sinulla on käytössäsi {pisteet} pistettä.")
+    print(f"Sinulla on käytössäsi {points} pistettä.")
 
-    while pisteet > 0 and pelit < 3:
+    while points > 0 and games < 3:
         print("\nJos haluat lopettaa, syötä 'Lopeta'")
         bet = input('Syötä panos: ').strip()
 
@@ -77,7 +77,7 @@ def minigame_roulette():
             continue
 
         bet = int(bet)
-        if bet > pisteet:
+        if bet > points:
             print("Sinulla ei ole tarpeeksi pisteitä! Syötä oikea määrä pisteitä.")
             continue
 
@@ -91,27 +91,27 @@ def minigame_roulette():
         color = roulette_odds()
 
         if usercolor != color:
-            pisteet -= bet
+            points -= bet
             print("\nWomp womp... Hävisit :D")
         elif color == 'green':
             bet *= 36
-            pisteet += bet
-            print(f'Winner winner! Onnittelut! Pisteitä on nyt {pisteet}. Nice')
+            points += bet
+            print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
 
         else:
             bet *= 2
-            pisteet += bet
-            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
+            points += bet
+            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
 
-        pelit += 1
-        if pelit >= 3:
-            print(f'Pisteitä on nyt {pisteet}')
+        games += 1
+        if games >= 3:
+            print(f'Pisteitä on nyt {points}')
             break
 
-        print(f"Pisteitä on nyt {pisteet}")
-        if pisteet <= 0:
+        print(f"Pisteitä on nyt {points}")
+        if points <= 0:
             print("Sinulta loppui pisteet ja hävisit pelin. :|")
             break
 
 
-minigame_roulette()
+
