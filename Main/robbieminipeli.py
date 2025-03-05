@@ -1,5 +1,7 @@
 import random
 import gba_print
+import sound
+import pygame
 
 def minigame_pummi():
     print("\nNäät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
@@ -30,7 +32,7 @@ def minigame_roulette():
     gba_print.slow_print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
     gba_print.slow_print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    points = 100 #tästä pitää inputtaa playerscore mainistä, 100 on placeholder
+    points = 100
     games = 0
 
     while True:
@@ -53,7 +55,7 @@ def minigame_roulette():
         black = (0, 48.5)
         red = (48.5, 97)
         green = (97, 100)
-        odds = float(random.randint(0, 100))
+        odds = random.randint(0, 100)
         if black[0] <= odds < black[1]:
             return "black"
         elif red[0] <= odds < red[1]:
@@ -93,26 +95,36 @@ def minigame_roulette():
         if usercolor != color:
             points -= bet
             gba_print.slow_print("\nWomp womp... Hävisit :D")
+            sound.roulettelose().play()
+            pygame.time.wait(500)
+
         elif color == 'green':
             bet *= 36
             points += bet
             gba_print.slow_print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
+            sound.roulettewin().play()
+            pygame.time.wait(500)
 
-        else:
+        elif color == 'red' or color == 'black':
             bet *= 2
             points += bet
             gba_print.slow_print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
+            sound.roulettewin().play()
+            pygame.time.wait(500)
 
         games += 1
+
+        if points <= 0:
+            sound.gameover().play()
+            pygame.time.wait(1000)
+            gba_print.slow_print("Sinulta loppui pisteet ja hävisit pelin. :|")
+            input('Jatka painamalla enteriä')
+            break
+
         if games >= 3:
             gba_print.slow_print(f'Pisteitä on nyt {points}')
             break
 
         gba_print.slow_print(f"Pisteitä on nyt {points}")
-        if points <= 0:
-            gba_print.slow_print("Sinulta loppui pisteet ja hävisit pelin. :|")
-            break
-
-
 
 minigame_roulette()
