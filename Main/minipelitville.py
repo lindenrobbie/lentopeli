@@ -138,28 +138,104 @@ def minigame_stockholm():
         print('Et päässyt alas saakka joten et saa pisteitä.')
 
 
+#minigame_stockholm()
+
+#paina enteriä jatkaaksesi ohjelmaa funktio
+def enter_continue():
+    while True:
+        useri=input('Jatka painamalla enter: ')
+        if useri == '':
+            print('')
+            break
+
+
+#Minipeli 4
+def minigame_bike():
+    bikechoise = 0
+    def bike_choise():
+        print('Valitse pyöräsi seuraavista:\n')
+        bikes={1:'1.Trek katupyörä',2:'2.Specialized DH pyörä',3:'3.Helkaman mummis',4:'4.Orbea sähköpyörä'}
+        for key in bikes:
+            print(f'{bikes[key]}')
+        choise=int(input('\nValintasi: '))
+        return choise
+
+    print('Ilmoittauduit pyöräilykilpailuun.')
+    print('Valitse oikea pyörä oikeaan tilanteeseen')
+    enter_continue()
+
+    #Startti
+    print('Lähtopäikalta lähdetään kiihdyttämään\n')
+    bikechoise=bike_choise()
+
+    if bikechoise == 1:
+        print('Katupyörä kiihtyy hitaasti mutta saavuttaa kovan nopeuden aikanaan')
+    if bikechoise == 2:
+        print('Polkemisesta häviää voima jousitukseen ja jäät jälkeen')
+    if bikechoise == 3:
+        print('Keulit mummiksella kisan kärkeen!')
+    if bikechoise == 4:
+        print('Painat kaasua ja pääset kärkikahinoihin ilman hikikarpaloita')
+
+    print('')
+
+    #Ylämäki
+    print('Saavut jyrkkään ylämäkeen')
+    enter_continue()
+    bikechoise=bike_choise()
+
+    if bikechoise == 1 or bikechoise == 2:
+        print('Vaihdat vaihdetta pienempään ja pääset mäen ylös')
+    if bikechoise == 3:
+        print('Mummiksesta loppuu vaihteet ja joudut taluttamaan mäen ylös')
+    if bikechoise == 4:
+        print('Liidät mäen ylös sähkön voimalla')
+    enter_continue()
+
+    #Alamäki
+    print('Edessäsi on jyrkkä ja epätasainen alamäki')
+    enter_continue()
+    bikechoise=bike_choise()
+
+    if bikechoise == 1 or bikechoise == 4:
+        while True:
+            walk=input('Talutatko pyörän alas?\nkyllä/ei')
+            if walk== 'kyllä':
+                print('pääset hitaasti mäen taluttamalla alas')
+                break
+            if walk== 'ei':
+                print('Kaadut alamäessä ja jäät viimeiseksi')
+                break
+
+    if bikechoise == 2:
+        print('Lennät epätasaisuuksien yli jousituksesi avulla kisan kärkeen')
+
+    if bikechoise == 3:
+        print('Ryskäät mummiksella mäen alas mutta vanne menee kieroon')
+    enter_continue()
+
+    #Mutka
+    print('Tulet alamäen jälkeen mutkaan')
+    enter_continue()
+    bikechoise=bike_choise()
+
+    if bikechoise == 3:
+        print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
+    else:
+        print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta')
 
 
 
-
-
-
-
-
-
-minigame_stockholm()
 
     
 
 
 
+minigame_bike()
+#enter_continue()
 
 
 
-
-#print ('Oikein vastattu! Ansaitsit 25 pistettä.')
-#print ('Vastasit väärin. Et ansainnut pisteitä')
-#print('Syötä numerovaihtoehto 1,2 tai 3!')
 
 
 
