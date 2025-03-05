@@ -30,7 +30,7 @@ def minigame_roulette():
     print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
     print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    points = 100
+    points = 100 #tästä pitää inputtaa playerscore mainistä, 100 on placeholder
     games = 0
 
     while True:
