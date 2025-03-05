@@ -105,6 +105,7 @@ def minigame_roulette():
 
         pelit += 1
         if pelit >= 3:
+            print(f'Pisteitä on nyt {pisteet}')
             break
 
         print(f"Pisteitä on nyt {pisteet}")
