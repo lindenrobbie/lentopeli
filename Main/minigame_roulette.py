@@ -3,30 +3,15 @@ import gba_print
 import sound
 import pygame
 
-def minigame_pummi():
-    print("\nNäät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
-    print('Annatko pummille (x määrä) rahaa? Kyllä/En')
+pygame.mixer.init()
 
-    while True:
-        print("")
-        r = input('').strip()
+roulette_win_sound = sound.roulettewin()
+roulette_lose_sound = sound.roulettelose()
+gameover_sound = sound.gameover()
 
-        if r in ["Kyllä", "En"]:
-            break
-        print("Vastaa Kyllä/En")
-
-    chance = random.randint(1, 10)
-    win = chance in range(1, 3)
-
-    if r == 'En':
-        print(
-            "\nJatkat matkaasi seuraavaan lentoon pikaisesti ja näät silmänkulmassasi kun pummi surullisesti tärisee nälästä")
-    elif r == 'Kyllä':
-        if win:
-            print("\nPummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestäsi.")
-        else:
-            print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
-
+win_channel = pygame.mixer.find_channel()
+lose_channel = pygame.mixer.find_channel()
+gameover_channel = pygame.mixer.find_channel()
 
 def minigame_roulette():
     gba_print.slow_print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
@@ -95,27 +80,31 @@ def minigame_roulette():
         if usercolor != color:
             points -= bet
             gba_print.slow_print("\nWomp womp... Hävisit :D")
-            sound.roulettelose().play()
-            pygame.time.wait(500)
+            if lose_channel:
+                lose_channel.play(roulette_lose_sound)
+            pygame.time.wait(1000)
 
         elif color == 'green':
             bet *= 36
             points += bet
             gba_print.slow_print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
-            sound.roulettewin().play()
-            pygame.time.wait(500)
+            if win_channel:
+                win_channel.play(roulette_win_sound)
+            pygame.time.wait(1000)
 
         elif color == 'red' or color == 'black':
             bet *= 2
             points += bet
             gba_print.slow_print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
-            sound.roulettewin().play()
-            pygame.time.wait(500)
+            if win_channel:
+                win_channel.play(roulette_win_sound)
+            pygame.time.wait(1000)
 
         games += 1
 
         if points <= 0:
-            sound.gameover().play()
+            if gameover_channel:
+                gameover_channel.play(gameover_sound)
             pygame.time.wait(1000)
             gba_print.slow_print("Sinulta loppui pisteet ja hävisit pelin. :|")
             input('Jatka painamalla enteriä')
@@ -125,6 +114,6 @@ def minigame_roulette():
             gba_print.slow_print(f'Pisteitä on nyt {points}')
             break
 
-        gba_print.slow_print(f"Pisteitä on nyt {points}")
+        gba_print.slow_print(f'Pisteitä on nyt {points}')
 
 minigame_roulette()

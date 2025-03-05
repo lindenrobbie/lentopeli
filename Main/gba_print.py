@@ -44,11 +44,3 @@ def slow_print(text, base_delay=0.03, sound_effect=True, end_with_newline=True):
 def slow_input(prompt, base_delay=0.03):
     slow_print(prompt, base_delay=base_delay, sound_effect=True, end_with_newline=False)
     return input(" ")
-print("")
-slow_print("Tässä pitäisi kuulua hassut äänet", base_delay=0.02)
-
-while True:
-
-    test = slow_input(f"Mitä haluat kirjoittaa?", base_delay=0.02)
-    print("")
-    slow_print(f"{test}!")
