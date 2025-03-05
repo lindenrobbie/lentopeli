@@ -1,147 +1,116 @@
 import random
-import main
+
 
 def minigame_pummi():
-
-    print("")
-    print("Näät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
+    print("\nNäät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
     print('Annatko pummille (x määrä) rahaa? Kyllä/En')
 
     while True:
-
         print("")
-        r = input('')
+        r = input('').strip()
 
-        chance = random.randint(1, 10)
-
-        if chance in range(1, 3):
-            win = True
-        else:
-            win = False
-
-        if r == 'En':
-            print("")
-            print("Jatkat matkaasi seuraavaan lentoon pikaisesti ja näät silmänkulmassasi kun pummi surullisesti tärisee nälästä")
+        if r in ["Kyllä", "En"]:
             break
+        print("Vastaa Kyllä/En")
 
-        elif r == 'Kyllä':
-                #deduct fee to agree to minigame
+    chance = random.randint(1, 10)
+    win = chance in range(1, 3)
 
-            if win == True:
-                print("")
-                print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestäsi.')
-                break
-                #insert a win reward here
-
-            elif win == False:
-                print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
-                break
-
+    if r == 'En':
+        print(
+            "\nJatkat matkaasi seuraavaan lentoon pikaisesti ja näät silmänkulmassasi kun pummi surullisesti tärisee nälästä")
+    elif r == 'Kyllä':
+        if win:
+            print("\nPummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestäsi.")
         else:
-            print("Älä ignooraa pummia... :(")
+            print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
+
 
 def minigame_roulette():
-    print("")
+    print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
+    print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    def roulette_odds(color):
+    pisteet = 100
+    pelit = 0
 
+    while True:
+        print("")
+        r = input('').strip()
+
+        if r in ["Kyllä", "En"]:
+            break
+        print("Vastaa Kyllä/En")
+
+    if r == 'En':
+        print("\nOlet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.")
+        pisteet += 50
+        print('+50 Pistettä')
+        print('Jatkat matkaa seuraavaan kenttään...')
+        print(f'Pisteesi ovat nyt: {pisteet}')
+        return
+
+    def roulette_odds():
         black = (0, 48.5)
         red = (48.5, 97)
         green = (97, 100)
-
         odds = float(random.randint(0, 100))
-
         if black[0] <= odds < black[1]:
             return "black"
-
         elif red[0] <= odds < red[1]:
             return "red"
-
-        elif green[0] <= odds < green[1]:
+        else:
             return "green"
-    print("")
-    print("Saavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
-    print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    while True:
+    print("\nKasinon työntekijä pyytää sinulta panosta.")
+    print(f"Sinulla on käytössäsi {pisteet} pistettä.")
 
-        print("")
-        r = input('')
+    while pisteet > 0 and pelit < 3:
+        print("\nJos haluat lopettaa, syötä 'Lopeta'")
+        bet = input('Syötä panos: ').strip()
 
-        if r == 'En':
-            print("")
-            print('Olet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.')
-            print('Jatkat matkaa seuraavaan kenttään...')
+        if bet.lower() == 'lopeta':
+            print("\nPäätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
             break
 
-        elif r == 'Kyllä':
+        if not bet.isdigit() or int(bet) <= 0:
+            print("Syötä positiivinen numero!")
+            continue
 
-            pisteet = main.pisteet
+        bet = int(bet)
+        if bet > pisteet:
+            print("Sinulla ei ole tarpeeksi pisteitä! Syötä oikea määrä pisteitä.")
+            continue
 
-            print("")
-            print("Kasinon työntekijä pyytää sinulta panosta.")
-            print("Paljon laitat panosta?")
-            print(f"Sinulla on käytössäsi {pisteet}")
+        print("\nValitse väri (Kirjoita green/red/black): ")
+        while True:
+            usercolor = input('').strip().lower()
+            if usercolor in ['red', 'green', 'black']:
+                break
+            print("Syötä valiidi väri (green/red/black)")
 
-            print("")
+        color = roulette_odds()
 
-            while True:
-                print("")
-                print("Jos haluat lopettaa syötä 'Lopeta'")
-                bet = input('Syötä panos: ')
+        if usercolor != color:
+            pisteet -= bet
+            print("\nWomp womp... Hävisit :D")
+        elif color == 'green':
+            bet *= 36
+            pisteet += bet
+            print(f'Winner winner! Onnittelut! Pisteitä on nyt {pisteet}. Nice')
 
-                if bet == 'Lopeta':
-                    print("")
-                    print("Päätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
-                    break
+        else:
+            bet *= 2
+            pisteet += bet
+            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
 
-                # Validate if the bet is an integer
-                if not bet.isdigit() or bet == 0:
-                    print("Syötä numero!")
-                    continue
+        pelit += 1
+        if pelit >= 3:
+            break
 
-                bet = int(bet)  # Convert to integer
+        print(f"Pisteitä on nyt {pisteet}")
+        if pisteet <= 0:
+            print("Sinulta loppui pisteet ja hävisit pelin. :|")
+            break
 
-                if bet > pisteet:
-                    print("Sinulla ei ole tarpeeksi pisteitä!")
-                    print("Syötä oikea määrä pisteitä")
-
-                elif bet <= pisteet:
-                    print("")
-                    print('Valitse väri (Kirjoita green/red/black tai syötä tyhjä kenttä sulkeaksi): ')
-
-                    while True:
-
-                        print("")
-                        usercolor = input('').strip().lower()
-
-                        color = roulette_odds('')
-
-                        if usercolor not in ('red', 'green', 'black'):
-                            print("")
-                            print("Syötä valiidi väri (green/red/black)")
-                            continue  # Loops back if color is invalid
-
-                        #lose sequence
-                        if usercolor != color:
-                            pisteet = pisteet - bet
-                            print("")
-                            print('Womp womp... Hävisit :D')
-                            print(f"Pisteitä on nyt {pisteet}")
-                            break
-
-                        #green win sequence
-                        elif color == 'green':
-                            bet = bet * 36
-                            pisteet = pisteet + bet
-                            print(f'Winner winner! Onnittelut! Pisteitä on nyt {pisteet}. Nice')
-                            break
-
-                        #general (black/red) win sequence
-                        elif color == 'black' or 'red':
-                            bet = bet * 2
-                            pisteet = pisteet + bet
-                            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
-                            break
 
 minigame_roulette()
