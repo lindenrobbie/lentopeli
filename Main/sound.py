@@ -9,7 +9,6 @@ SOUND_DIR = os.path.join(os.path.dirname(__file__), "sound")
 
 # Load sounds by file name
 def load_sound(filename):
-    """Load and return a pygame Sound object."""
     path = os.path.join(SOUND_DIR, filename)
     return pygame.mixer.Sound(path)
 
@@ -22,3 +21,6 @@ def roulettelose():
 
 def gameover():
     return load_sound("gameover.wav")
+
+def titlescreen():
+    return load_sound("titlescreen.wav")
