@@ -1,6 +1,12 @@
-import random
+import sys
+import os
+
+# Get the parent directory (Main)
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import gba_print
 import sound
+import random
 import pygame
 
 pygame.mixer.init()
