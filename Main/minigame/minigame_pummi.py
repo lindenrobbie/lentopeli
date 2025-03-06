@@ -31,5 +31,3 @@ def minigame_pummi():
             gba_print.slow_print("\nPummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestäsi.")
         else:
             gba_print.slow_print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
-
-minigame_pummi()
