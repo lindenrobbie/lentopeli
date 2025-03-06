@@ -1,6 +1,8 @@
 import random
-
+import minigames
 #Minipeli 1
+
+
 def minigame_late():
     print ('')
     print ("Olet myöhästymässä lentokoneestasi!")
@@ -152,90 +154,109 @@ def enter_continue():
 #Minipeli 4
 def minigame_bike():
     bikechoise = 0
-    def bike_choise():
-        print('Valitse pyöräsi seuraavista:\n')
-        bikes={1:'1.Trek katupyörä',2:'2.Specialized DH pyörä',3:'3.Helkaman mummis',4:'4.Orbea sähköpyörä'}
-        for key in bikes:
-            print(f'{bikes[key]}')
-        choise=int(input('\nValintasi: '))
-        return choise
+    # def bike_choise():
+    #     print('Valitse pyöräsi seuraavista:\n')
+    #     bikes={1:'1.Trek katupyörä',2:'2.Specialized DH pyörä',3:'3.Helkaman mummis',4:'4.Orbea sähköpyörä'}
+    #     for key in bikes:
+    #         print(f'{bikes[key]}')
+    #     choise=(input('\nValintasi: '))
+    #     return choise
+
+    #Eliaksen funktio testi
+    #minigames.query('Valitse pyöräsi seuraavista', ['1. Trek katupyörä','2.Specialized DH pyörä','3.Helkaman mummis','4.Orbea sähköpyörä'],['1','2','3','4'])
+
 
     print('Ilmoittauduit pyöräilykilpailuun.')
     print('Valitse oikea pyörä oikeaan tilanteeseen')
     enter_continue()
 
     #Startti
-    print('Lähtopäikalta lähdetään kiihdyttämään\n')
-    bikechoise=bike_choise()
+    print('|Lähtopäikalta lähdetään kiihdyttämään|\n')
+    bikechoise=minigames.query('Valitse pyöräsi seuraavista', ['1. Trek katupyörä','2.Specialized DH pyörä','3.Helkaman mummis','4.Orbea sähköpyörä'],['1','2','3','4'])
 
-    if bikechoise == 1:
+    if bikechoise == '1':
         print('Katupyörä kiihtyy hitaasti mutta saavuttaa kovan nopeuden aikanaan')
-    if bikechoise == 2:
+    if bikechoise == '2':
         print('Polkemisesta häviää voima jousitukseen ja jäät jälkeen')
-    if bikechoise == 3:
+    if bikechoise == '3':
         print('Keulit mummiksella kisan kärkeen!')
-    if bikechoise == 4:
+    if bikechoise == '4':
         print('Painat kaasua ja pääset kärkikahinoihin ilman hikikarpaloita')
 
     print('')
 
     #Ylämäki
-    print('Saavut jyrkkään ylämäkeen')
+    print('|Saavut jyrkkään ylämäkeen|')
     enter_continue()
-    bikechoise=bike_choise()
+    bikechoise=minigames.query('Valitse pyöräsi seuraavista', ['1. Trek katupyörä','2.Specialized DH pyörä','3.Helkaman mummis','4.Orbea sähköpyörä'],['1','2','3','4'])
 
-    if bikechoise == 1 or bikechoise == 2:
+    if bikechoise == '1' or bikechoise == '2':
         print('Vaihdat vaihdetta pienempään ja pääset mäen ylös')
-    if bikechoise == 3:
+    if bikechoise == '3':
         print('Mummiksesta loppuu vaihteet ja joudut taluttamaan mäen ylös')
-    if bikechoise == 4:
+    if bikechoise == '4':
         print('Liidät mäen ylös sähkön voimalla')
     enter_continue()
 
     #Alamäki
-    print('Edessäsi on jyrkkä ja epätasainen alamäki')
+    print('|Edessäsi on jyrkkä ja epätasainen alamäki|')
     enter_continue()
-    bikechoise=bike_choise()
+    bikechoise=minigames.query('Valitse pyöräsi seuraavista', ['1. Trek katupyörä','2.Specialized DH pyörä','3.Helkaman mummis','4.Orbea sähköpyörä'],['1','2','3','4'])
 
-    if bikechoise == 1 or bikechoise == 4:
+    if bikechoise == '1' or bikechoise == '4':
         while True:
             walk=input('Talutatko pyörän alas?\nkyllä/ei')
             if walk== 'kyllä':
                 print('pääset hitaasti mäen taluttamalla alas')
                 break
             if walk== 'ei':
-                print('Kaadut alamäessä ja jäät viimeiseksi')
-                break
+                return print('Kaadut alamäessä ja pyöräsi hajosi')
 
-    if bikechoise == 2:
+    if bikechoise == '2':
         print('Lennät epätasaisuuksien yli jousituksesi avulla kisan kärkeen')
 
-    if bikechoise == 3:
+    if bikechoise == '3':
         print('Ryskäät mummiksella mäen alas mutta vanne menee kieroon')
     enter_continue()
 
     #Mutka
-    print('Tulet alamäen jälkeen mutkaan')
+    print('|Tulet alamäen jälkeen mutkaan|')
     enter_continue()
-    bikechoise=bike_choise()
+    bikechoise=minigames.query('Valitse pyöräsi seuraavista', ['1. Trek katupyörä','2.Specialized DH pyörä','3.Helkaman mummis','4.Orbea sähköpyörä'],['1','2','3','4'])
 
-    if bikechoise == 3:
+    if bikechoise == '3':
         print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
     else:
-        print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta')
+        print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta\n|Pääsit maaliin saakka!|')
 
-
-
-
-    
-
-
-
-minigame_bike()
+#minigame_bike()
 #enter_continue()
 
 
+#Minipeli 5
+
+def minigame_bank():
+    print('Matkaat zurichiin tallettamaan käteisvarojasi')
+    while True:
+        try:
+            money=int(input('Syötä talletettava rahamäärä: '))
+            break
+        except:
+            pass
+
+    bank=minigames.query(f'|Haluat tallettaa {money}€. Valitse seuraavista pankeista tili joka mielestäsi on tuottoisin hyvin pitkälle aikavälille|',
+                    ['1.Banque Heritage: 2.5% talletuskorko + 3% vuosikorko','2.Bank SYZ: 1.5% talletuskorko + 4% vuosikorko','3.Geneva Swiss Bank: 5.5% vuosikorko'],
+                    ['1','2','3'])
+
+    if bank == '1':
+        print('|Tämän pankin tilillä on paras tuotto lyhyellä aikavälillä.|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '2':
+        print('|Tämän pankin tili on ns. kultainen keskitie lyhyelle ja pitkälle tähtäimelle|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '3':
+        print('|Tällä tilillä on paras vuosikorko joten se ylittää aikanaan toisten tilien talletuskoron hyödyn|')
+        return print('Valitsit oikean tilin ja sait xxx pistettä!')
 
 
-
-
+minigame_bank()

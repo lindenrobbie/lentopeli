@@ -17,7 +17,7 @@ def query(question: str, options: list, answers: list):
             if input_answer == i:
                 return input_answer
         
-        print("annoit väärän vastauksen")
+        print("Anna validi vastaus!")
 
 
 #Ville minipeli 1
@@ -360,28 +360,3 @@ def roulette():
                             pisteet = pisteet + bet
                             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
                             break
-
-
-#Elias minipeli 1
-def delgado():
-    question = query("Milloin Humberto Delgadon lentoasema vihittiin virallisesti käyttöön",
-                    ["1: 1930", "2: 1942", "3: 1955", "1966"],
-                    ["1", "2", "3", "4"])
-
-    if question == "2":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
-    else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
-
-#Elias minipeli 2
-def kastrup():
-    question = query("Minä vuonna Kööpenhaminan Kastrupin lentoasema avattiin?",
-                    ["1: 1925", "2: 1935", "3: 1945", "4: 1955"],
-                    ["1", "2", "3", "4"])
-    if question == "1":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
-    else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
-
