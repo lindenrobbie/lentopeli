@@ -1,3 +1,20 @@
+#robbien tekemä minipeli Wienin lentokentälle
+
+
+#Peli on ruletti joka pelaa max 3 kierrosta, todennäkösyydet perustuu EU:n rulettisääntöihin. Mustan & punasen kerroin on 2x, ja vihreen kerroin on 36x.
+#Pisteitä voi laittaa niin paljon kuin mitä pelaajalla on siinä hetkessä kun saapuu kentälle.
+#Pelaaja voi keskeyttää pelin vaikka on pelannu alle 3 kierrosta, mutta ei panoksen laittamisen jälkeen.
+
+"""Rundown:
+
+1. Pelaaja valitsee pelaatko (Kyllä/En)
+2. Pelaaja syöttää panoksen tai lopettaa (syötä valiidi pistemäärä tai "Lopeta")
+3. Pelaaja valitsee värin (red/black/green)
+4. Peli arpoo häviön/vointon
+
+Peli myös palkitsee pelaajan 50 pisteellä jos hän ei aloita rulettia ollenkaan.
+"""
+
 import sys
 import os
 
@@ -120,5 +137,3 @@ def minigame_roulette():
             break
 
         gba_print.slow_print(f'Pisteitä on nyt {points}')
-
-minigame_roulette()
