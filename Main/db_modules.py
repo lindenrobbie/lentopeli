@@ -35,12 +35,12 @@ def select_airport():
     while True:
         i = random.randint(1, 21)
         try:
-            db_command(f"SELECT airport_ID FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
+            db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
         except:
             pass
         else:
             break
-    return db_command(f"SELECT airport_ID FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
+    return db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
 
 
 # arpoo 2 lentokenttää, jossa pelaaja ei ole käynyt
@@ -54,7 +54,7 @@ def choose_airport():
         if airport2 != airport1:
             break
 
-    return airport1, airport2
+    return [airport1, airport2]
 
 
 # lisää pelaajan tietokantaan, aloittaa 1000 pisteellä
