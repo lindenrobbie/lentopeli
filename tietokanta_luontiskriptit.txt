@@ -1,23 +1,20 @@
-/* 1. Tämä luo meidän pelin tietokannan */
-
 CREATE DATABASE lentopeli;
 
 USE lentopeli;
 
-/* 2. Tässä luodaan tietokantaan taulu jossa pelaajatiedot tallennetaan*/
-/* -  Muista valita database tässä väissä "USE lentopeli;"
-/* -  Tämä pöytä tallentaa väliaikasesti pelaajan tiedot, jos peli tulisi sulkea niin täältä haetaan väliaikaset tiedot takaisin että peli voi jatkua */
-
+CREATE TABLE airport (
+    airport_ID INT NOT NULL PRIMARY KEY,
+    airport_name VARCHAR(255) NOT NULL,
+    airport_visited BOOLEAN DEFAULT FALSE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE game (
     game_ID INT AUTO_INCREMENT PRIMARY KEY,
     game_playername VARCHAR(100) NOT NULL,
     game_playerscore INT NOT NULL,
-    game_playerinventory TEXT
+    game_playerpos INT NOT NULL,
+    FOREIGN KEY (game_playerpos) REFERENCES airport (airport_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/* 3. Luodaan scoreboard pöytä johon tallentuun pelin lopussa pelaajan nimi ja loppupisteet. */
-/* - Tässä on scoreboard, eli pistetaulukko */
 
 CREATE TABLE scoreboard (
 	scoreboard_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,41 +22,28 @@ CREATE TABLE scoreboard (
     scoreboard_finalscore INT NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/* 4. Luodaan airport pöytä johon tulee lentokentän tiedot */
-
-CREATE TABLE airport (
-    airport_ID INT AUTO_INCREMENT PRIMARY KEY,
-    airport_name VARCHAR(255) NOT NULL,
-    airport_country VARCHAR(100),
-    airport_latitude DECIMAL(9, 6),
-    airport_longitude DECIMAL(9, 6),
-    airport_visited BOOLEAN DEFAULT FALSE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/* 5. Lisätään airport tauluun dataa lentokentistä */
-
-INSERT INTO airport (airport_ID, airport_name, airport_country, airport_latitude, airport_longitude, airport_visited)
+INSERT INTO airport (airport_ID, airport_name, airport_visited)
 VALUES
-(1, 'London Heathrow Airport', 'GB', 51.4706, -0.461941, FALSE),
-(2, 'Charles de Gaulle International Airport', 'FR', 49.012798, 2.55, FALSE),
-(3, 'Amsterdam Airport Schiphol', 'NL', 52.308601, 4.76389, FALSE),
-(4, 'Frankfurt am Main Airport', 'DE', 50.036249, 8.559294, FALSE),
-(5, 'Rome–Fiumicino Leonardo da Vinci International Airport', 'IT', 41.804532, 12.251998, FALSE),
-(6, 'Humberto Delgado Airport Lisbon Portela', 'PT', 38.7813, -9.13592, FALSE),
-(7, 'Palma de Mallorca Airport', 'ES', 39.551701, 2.73881, FALSE),
-(8, 'Athens Eleftherios Venizelos International Airport', 'GR', 37.936401, 23.9445, FALSE),
-(9, 'Vienna International Airport', 'AT', 48.110298, 16.5697, FALSE),
-(10, 'Zurich Airport', 'CH', 47.458056, 8.548056, FALSE),
-(11, 'Copenhagen Kastrup Airport', 'DK', 55.617901, 12.656000, FALSE),
-(12, 'Manchester Airport', 'GB', 53.349375, -2.279521, FALSE),
-(13, 'Oslo Airport, Gardermoen', 'NO', 60.193901, 11.1004, FALSE),
-(14, 'Brussels Airport', 'BE', 50.901402, 4.48444, FALSE),
-(15, 'Stockholm-Arlanda Airport', 'SE', 59.651901, 17.918600, FALSE),
-(16, 'Warsaw Chopin Airport', 'PL', 52.165699, 20.967100, FALSE),
-(17, 'Budapest Liszt Ferenc International Airport', 'HU', 47.42976, 19.261093, FALSE),
-(18, 'Helsinki Vantaa Airport', 'FI', 60.3172, 24.963301, FALSE),
-(19, 'Tirana International Airport Mother Teresa', 'AL', 41.4147, 19.7206, FALSE),
-(20, 'Keflavik International Airport', 'IS', 63.985001, -22.6056, FALSE),
-(21, 'Riga International Airport', 'LV', 56.923599, 23.971100, FALSE);
+(1, 'London Heathrow Airport', FALSE),
+(2, 'Charles de Gaulle International Airport', FALSE),
+(3, 'Amsterdam Airport Schiphol', FALSE),
+(4, 'Frankfurt am Main Airport', FALSE),
+(5, 'Rome–Fiumicino Leonardo da Vinci International Airport', FALSE),
+(6, 'Humberto Delgado Airport Lisbon Portela', FALSE),
+(7, 'Palma de Mallorca Airport', FALSE),
+(8, 'Athens Eleftherios Venizelos International Airport', FALSE),
+(9, 'Vienna International Airport', FALSE),
+(10, 'Zurich Airport', FALSE),
+(11, 'Copenhagen Kastrup Airport', FALSE),
+(12, 'Manchester Airport', FALSE),
+(13, 'Oslo Airport, Gardermoen', FALSE),
+(14, 'Brussels Airport', FALSE),
+(15, 'Stockholm-Arlanda Airport', FALSE),
+(16, 'Warsaw Chopin Airport', FALSE),
+(17, 'Budapest Liszt Ferenc International Airport', FALSE),
+(18, 'Helsinki Vantaa Airport', FALSE),
+(19, 'Tirana International Airport Mother Teresa', FALSE),
+(20, 'Keflavik International Airport', FALSE),
+(21, 'Riga International Airport', FALSE);
 
 ALTER DATABASE lentopeli CHARACTER SET utf8 COLLATE utf8_unicode_ci;
