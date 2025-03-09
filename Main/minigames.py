@@ -20,8 +20,8 @@ def query(question: str, options: list, answers: list):
         print("Anna validi vastaus!")
 
 
-#Ville minipeli 1
-def late():
+#Ville minipeli 1 "late"
+def athens():
     print("Olet myöhästymässä lentokoneestasi!")
     print("Joudut improvisoimaan jotta kerkeät lennolle")
     print("Valitse jokin seuraavista vaihtoehdoista:")
@@ -141,9 +141,16 @@ def stockholm():
     else:
         print('Et päässyt alas saakka joten et saa pisteitä.')
 
+#Ville Minipeli 4
+def amsterdam():
+    print("amsterdam")
 
-#Mika minipeli 1
-def donalduck():
+#Ville Minipeli 5
+def zurich():
+    print("zurich")
+
+#Mika minipeli 1 "donalduck"
+def helsinki():
     print("Lentokentän kahviossa edessä olevalta lapselta puuttuu pillimehusta rahaa 2 euroa.")
 
     while True:
@@ -166,8 +173,8 @@ def donalduck():
         break
 
 
-#Mika minipeli 2
-def carddraw():
+#Mika minipeli 2 "carddraw"
+def manchester():
     while True:
         print("Vieressä istuva aussi Hugh Jackman on tylistymässä kuoliaaksi ja "
             "haastaa sinut pelaamaan kortin vetoa, isoin kortti voittakoon!")
@@ -195,8 +202,8 @@ def carddraw():
             print(f"Pelaaja (tähän pelaajan nimimerkki) voitti Hugh Jackmanin.\nPalkinnoksi sait wolverinen muoviset raateluterät. Oiva lahja siskon pojalle! Pisteesi kerrotaan kertoimella 1.2!")
 
 
-#Mika minipeli 3
-def words():
+#Mika minipeli 3 "words"
+def charles():
     points=100
     repeats=0
     print("Pikkuvanha Elviira-Elise haluaa näpäyttää sinua ja pyytää laittamaan seuraavat sanat käänteiseen järjestykseen takaperin.\n"
@@ -214,9 +221,16 @@ def words():
                 print("Et onnistunut voi pöhköliini <3 Pikkuvanha osasi sua paremmin!")
                 break
 
+#Mika minipeli 4
+def london():
+    print("london")
 
-#Robbie minipeli 1
-def pummi():
+#Mika minipeli 5
+def rome():
+    print("rome")
+
+#Robbie minipeli 1 "pummi"
+def tirana():
 
     print("")
     print("Näät lentokentässä pummin joka pyytää sinulta rahaa ruokaan")
@@ -256,8 +270,8 @@ def pummi():
             print("Älä ignooraa pummia... :(")
 
 
-#Robbie minipeli 2
-def roulette():
+#Robbie minipeli 2 "roulette"
+def vienna():
     print("")
 
     def roulette_odds(color):
@@ -361,9 +375,20 @@ def roulette():
                             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
                             break
 
+#Robbie minipeli 3
+def warsaw():
+    print("warsaw")
+
+#Robbie minipeli 4
+def budapest():
+    print("budapest")
+
+#Robbie minipeli 5
+def keflavik():
+    print("keflavik")
 
 #Elias minipeli 1
-def delgado():
+def humberto():
     question = query("Milloin Humberto Delgadon lentoasema vihittiin virallisesti käyttöön",
                     ["1: 1930", "2: 1942", "3: 1955", "1966"],
                     ["1", "2", "3", "4"])
@@ -375,7 +400,7 @@ def delgado():
         print("Vastasit väärin!\nMenetät 10 pistettä")
 
 #Elias minipeli 2
-def kastrup():
+def copenhagen():
     question = query("Minä vuonna Kööpenhaminan Kastrupin lentoasema avattiin?",
                     ["1: 1925", "2: 1935", "3: 1945", "4: 1955"],
                     ["1", "2", "3", "4"])
@@ -385,4 +410,14 @@ def kastrup():
     else:
         print("Vastasit väärin!\nMenetät 10 pistettä")
 
+#Elias minipeli 3
+def oslo():
+    print("oslo")
 
+#Elias minipeli 4
+def brussels():
+    print("brussels")
+
+#Elias minipeli 5
+def riga():
+    print("riga")
