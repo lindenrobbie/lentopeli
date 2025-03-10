@@ -350,7 +350,7 @@ def rome():
 def mallorca():
     print("Mallorca")
 
-#Robbie minipeli 1 "pummi"
+#Robbie minipeli 1 "pummi" (DONE)
 def tirana():
 
     print("")
@@ -391,7 +391,7 @@ def tirana():
             print("Älä ignooraa pummia... :(")
 
 
-#Robbie minipeli 2 "roulette"
+#Robbie minipeli 2 "roulette" (DONE)
 def vienna():
     print("")
 
@@ -428,7 +428,7 @@ def vienna():
 
         elif r == 'Kyllä':
 
-            pisteet = main.pisteet
+            pisteet = 100 #main.pisteet TÄHÄN PITÄÄ IMPORTTAA MAIN PISTEET
 
             print("")
             print("Kasinon työntekijä pyytää sinulta panosta.")
@@ -498,17 +498,93 @@ def vienna():
 
 #Robbie minipeli 3
 def warsaw():
-    print("warsaw")
 
-#Robbie minipeli 4
+    question = query("Mikä vuosi on tunnettu Varsovan kapinan vuodesta?",
+                     ["1: 1939", "2: 1944", "3: 1945", "4: 1956"],
+                     ["1", "2", "3", "4"])
+
+    if question == "2":
+        print("Vastasit oikein!\nVoitit 10 pistettä!")
+    else:
+        print("Vastasit väärin!\nMenetät 10 pistettä")
+
+#Robbie minipeli 4 (DONE)
 def budapest():
-    print("budapest")
 
-#Robbie minipeli 5
+    def paddle_type():
+        return random.choice(["slow", "fast"])
+
+    def score(teamscore, opponentscore):
+        print(f'\033[33m{teamscore} - {opponentscore}\033[0m')
+
+    print(f'\nSaavuit budapestiin, ja soudat Danube joessa.')
+    print(f'Harhaannuit väärään osaan jokea ja et tiennyt että joessa oli soutukilpailu.')
+    print('Aika kilpailla!')
+
+    teamscore = 0
+    opponentscore = 0
+
+    while teamscore < 5 and opponentscore < 5:
+        print(f'\nKilpailu on kiivas! Veneesi liitää eteenpäin Tonavalla!')
+        print('Mitä teet?')
+
+        type = paddle_type()
+
+        if type == "slow":
+            print('\nPaddlaat hitaasti, mutta virta on voimakas!')
+            action_choice = input('Haluatko yrittää nopeuttaa venettäsi? (1/2) \n1. Paddlaa nopeammin \n2. Jatka hitaasti paddlaamista\n')
+
+            if action_choice == '1':
+                print('\nPaddlasit nopeammin! Veneesi kiihdytti eteenpäin!')
+                teamscore += 1
+            elif action_choice == '2':
+                print('\nVeneesi jäi hieman jälkeen. Vastustaja sai etumatkaa!')
+                opponentscore += 1
+            else:
+                print('\nJäiksite paikalleen ja et tehnyt mitään. Vastustaja ohitti sinut!')
+                opponentscore += 1
+
+        elif type == "fast":
+
+            print('\nPaddlaat nopeasti, veneesi kiihdyttää eteenpäin!')
+            action_choice = input('Haluatko väistää edessä olevia esteitä? (1/2)\n1. Siirry vasemmalle väistäksesi roskia\n2. Jatka nykyisellä kurssilla\n')
+
+            if action_choice == '1':
+                print('\nVäistit roskat ja sait lisää vauhtia!')
+                teamscore += 1
+            elif action_choice == '2':
+                print('\nHidastit veneesi törmätessä roskien kanssa. Vastustaja otti johdon!')
+                opponentscore += 1
+            else:
+                print('\nEt tehnyt liikettä ja törmäsit roskiin. Menetit aikaa!')
+                opponentscore += 1
+
+        score(teamscore, opponentscore)
+
+        if teamscore == 5:
+            print(f'\nUpeat suoritus! Voitit venekilpailun! Woohoo!')
+            print('Rannalla olevat ihmiset kannustivat sinua, kun veneesi ylitti maalilinjan!')
+            points =+ 200
+            break
+
+        if opponentscore == 5:
+            print(f'\nHävisit kilpailun. :(')
+            print('Rannalla olevat katsojat pudistivat päätään pettyneinä.')
+            break
+
+#Robbie minipeli 5 (DONE)
 def keflavik():
-    print("keflavik")
 
-#Robbie minipeli 6
+    question = query("\nKuka oli ensimmäinen Islantiin asettunut vikingi?\n",
+                     ["1: Leif Erikson", "2: Erik the Red", "3: Ingólfur Arnarson", "4: Snorri Sturluson\n"],
+                     ["1", "2", "3", "4"])
+
+    if question == "3":
+        print("Vastasit oikein!\nVoitit 10 pistettä!")
+    else:
+        print("Vastasit väärin!\nMenetät 10 pistettä")
+
+#Robbie minipeli 6 (DONE)
 def mallorca():
     print(f'\nSaavuit ihanaan mallorcaan missä rannalla paistaa ihanasti aurinko.')
     print('Rannalla kävelyllä astuit epähuomiossa rantapallopeliturnauksen keskelle ja jouduit pelaajaksi kentälle.')
