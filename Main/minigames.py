@@ -141,13 +141,113 @@ def stockholm():
     else:
         print('Et päässyt alas saakka joten et saa pisteitä.')
 
+#Paina enteriä jatkaaksesi
+def enter_continue():
+    while True:
+        useri=input('Jatka painamalla enter: ')
+        if useri == '':
+            print('')
+            break
+
 #Ville Minipeli 4
 def amsterdam():
-    print("amsterdam")
+    print('Ilmoittauduit pyöräilykilpailuun.')
+    print('Valitse oikea pyörä oikeaan tilanteeseen')
+    enter_continue()
+
+    # Startti
+    print('|Lähtopäikalta lähdetään kiihdyttämään|\n')
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1':
+        print('Katupyörä kiihtyy hitaasti mutta saavuttaa kovan nopeuden aikanaan')
+    if bikechoise == '2':
+        print('Polkemisesta häviää voima jousitukseen ja jäät jälkeen')
+    if bikechoise == '3':
+        print('Keulit mummiksella kisan kärkeen!')
+    if bikechoise == '4':
+        print('Painat kaasua ja pääset kärkikahinoihin ilman hikikarpaloita')
+
+    print('')
+
+    # Ylämäki
+    print('|Saavut jyrkkään ylämäkeen|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1' or bikechoise == '2':
+        print('Vaihdat vaihdetta pienempään ja pääset mäen ylös')
+    if bikechoise == '3':
+        print('Mummiksesta loppuu vaihteet ja joudut taluttamaan mäen ylös')
+    if bikechoise == '4':
+        print('Liidät mäen ylös sähkön voimalla')
+    enter_continue()
+
+    # Alamäki
+    print('|Edessäsi on jyrkkä ja epätasainen alamäki|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1' or bikechoise == '4':
+        while True:
+            walk = input('Talutatko pyörän alas?\nkyllä/ei')
+            if walk == 'kyllä':
+                print('pääset hitaasti mäen taluttamalla alas')
+                break
+            if walk == 'ei':
+                return print('Kaadut alamäessä ja pyöräsi hajosi')
+
+    if bikechoise == '2':
+        print('Lennät epätasaisuuksien yli jousituksesi avulla kisan kärkeen')
+
+    if bikechoise == '3':
+        print('Ryskäät mummiksella mäen alas mutta vanne menee kieroon')
+    enter_continue()
+
+    # Mutka
+    print('|Tulet alamäen jälkeen mutkaan|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '3':
+        print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
+    else:
+        print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta\n|Pääsit maaliin saakka!|')
 
 #Ville Minipeli 5
 def zurich():
-    print("zurich")
+    print('Matkaat zurichiin tallettamaan käteisvarojasi')
+    while True:
+        try:
+            money = int(input('Syötä talletettava rahamäärä: '))
+            break
+        except:
+            pass
+
+    bank = query(
+        f'|Haluat tallettaa {money}€. Valitse seuraavista pankeista tili joka mielestäsi on tuottoisin hyvin pitkälle aikavälille|',
+        ['1.Banque Heritage: 2.5% talletuskorko + 3% vuosikorko', '2.Bank SYZ: 1.5% talletuskorko + 4% vuosikorko',
+         '3.Geneva Swiss Bank: 5.5% vuosikorko'],
+        ['1', '2', '3'])
+
+    if bank == '1':
+        print('|Tämän pankin tilillä on paras tuotto lyhyellä aikavälillä.|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '2':
+        print('|Tämän pankin tili on ns. kultainen keskitie lyhyelle ja pitkälle tähtäimelle|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '3':
+        print('|Tällä tilillä on paras vuosikorko joten se ylittää aikanaan toisten tilien talletuskoron hyödyn|')
+        return print('Valitsit oikean tilin ja sait xxx pistettä!')
+
 
 #Mika minipeli 1 "donalduck"
 def helsinki():
