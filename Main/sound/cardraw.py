@@ -60,3 +60,4 @@ def minigame_carddraw():
                     "Tuli kruuna, arvasit väärin! Hugh Jackman voitti. Älä sure, tapasit sentään charmantin aussin <3")
 
 minigame_carddraw()
+##
