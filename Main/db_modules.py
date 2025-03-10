@@ -35,12 +35,12 @@ def select_airport():
     while True:
         i = random.randint(1, 21)
         try:
-            db_command(f"SELECT airport_name FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
+            db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
         except:
             pass
         else:
             break
-    return db_command(f"SELECT airport_name FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
+    return db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
 
 
 # arpoo 2 lentokenttää, jossa pelaaja ei ole käynyt
@@ -54,14 +54,14 @@ def choose_airport():
         if airport2 != airport1:
             break
 
-    return airport1, airport2
+    return [airport1, airport2]
 
 
 # lisää pelaajan tietokantaan, aloittaa 1000 pisteellä
 def add_player():
-    if False:  # muuta falseksi, jos haluut syöttää oman nimen
-        name = "test"
-    else:
-        name = input("Syötä nimi: ")
+    name = input("Syötä nimi: ")
+    db_command(f"INSERT INTO game (game_playername, game_playerscore, game_playerpos) VALUES ('{name}', 1000, 1)")
 
-    db_command(f"INSERT INTO game (game_playername, game_playerscore) VALUES ('{name}', 1000)")
+def travel_to(airport_id, game_id):
+    db_command(f"UPDATE airport SET airport_visited=TRUE WHERE airport_id={airport_id}")
+    db_command(f"UPDATE game SET game_playerpos={airport_id} WHERE game_ID={game_id}")
