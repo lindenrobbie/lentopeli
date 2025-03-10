@@ -329,6 +329,10 @@ def london():
 def rome():
     print("rome")
 
+#Mallorca minipeli
+def mallorca():
+    print("Mallorca")
+
 #Robbie minipeli 1 "pummi"
 def tirana():
 

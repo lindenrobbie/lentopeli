@@ -33,5 +33,5 @@ for i in range(10):
     #muokataan minipelejä myöhemmin niin, että ne palauttaa pistemäärän / kertoimen
 
 #Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
-    airportgame={2:minigames.words(),3:minigames.bike(),4:minigames.frankfurt(),7:minigames.delgado(),8:minigames.late(),9:minigames.roulette(),10:minigames.bank(),11:minigames.kastrup(),12:minigames.carddraw(),15:minigames.stockholm(),18:minigames.donalduck(),19:minigames.pummi()}
+    airportgame={1:minigames.london(),2:minigames.charles(),3:minigames.amsterdam(),4:minigames.frankfurt(),5:minigames.rome(),6:minigames.humberto(),7:minigames.mallorca(),8:minigames.athens(),9:minigames.vienna(),10:minigames.zurich(),11:minigames.copenhagen(),12:minigames.manchester(),13:minigames.oslo(),14:minigames.brussels(),15:minigames.stockholm(),16:minigames.warsaw(),17:minigames.budapest(),18:minigames.helsinki(),19:minigames.tirana(),20:minigames.keflavik(),21:minigames.riga()}
     minigame=airportgame[id]
