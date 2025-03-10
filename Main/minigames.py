@@ -141,13 +141,113 @@ def stockholm():
     else:
         print('Et päässyt alas saakka joten et saa pisteitä.')
 
+#Paina enteriä jatkaaksesi
+def enter_continue():
+    while True:
+        useri=input('Jatka painamalla enter: ')
+        if useri == '':
+            print('')
+            break
+
 #Ville Minipeli 4
 def amsterdam():
-    print("amsterdam")
+    print('Ilmoittauduit pyöräilykilpailuun.')
+    print('Valitse oikea pyörä oikeaan tilanteeseen')
+    enter_continue()
+
+    # Startti
+    print('|Lähtopäikalta lähdetään kiihdyttämään|\n')
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1':
+        print('Katupyörä kiihtyy hitaasti mutta saavuttaa kovan nopeuden aikanaan')
+    if bikechoise == '2':
+        print('Polkemisesta häviää voima jousitukseen ja jäät jälkeen')
+    if bikechoise == '3':
+        print('Keulit mummiksella kisan kärkeen!')
+    if bikechoise == '4':
+        print('Painat kaasua ja pääset kärkikahinoihin ilman hikikarpaloita')
+
+    print('')
+
+    # Ylämäki
+    print('|Saavut jyrkkään ylämäkeen|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1' or bikechoise == '2':
+        print('Vaihdat vaihdetta pienempään ja pääset mäen ylös')
+    if bikechoise == '3':
+        print('Mummiksesta loppuu vaihteet ja joudut taluttamaan mäen ylös')
+    if bikechoise == '4':
+        print('Liidät mäen ylös sähkön voimalla')
+    enter_continue()
+
+    # Alamäki
+    print('|Edessäsi on jyrkkä ja epätasainen alamäki|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '1' or bikechoise == '4':
+        while True:
+            walk = input('Talutatko pyörän alas?\nkyllä/ei')
+            if walk == 'kyllä':
+                print('pääset hitaasti mäen taluttamalla alas')
+                break
+            if walk == 'ei':
+                return print('Kaadut alamäessä ja pyöräsi hajosi')
+
+    if bikechoise == '2':
+        print('Lennät epätasaisuuksien yli jousituksesi avulla kisan kärkeen')
+
+    if bikechoise == '3':
+        print('Ryskäät mummiksella mäen alas mutta vanne menee kieroon')
+    enter_continue()
+
+    # Mutka
+    print('|Tulet alamäen jälkeen mutkaan|')
+    enter_continue()
+    bikechoise = query('Valitse pyöräsi seuraavista',
+                                 ['1. Trek katupyörä', '2.Specialized DH pyörä', '3.Helkaman mummis',
+                                  '4.Orbea sähköpyörä'], ['1', '2', '3', '4'])
+
+    if bikechoise == '3':
+        print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
+    else:
+        print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta\n|Pääsit maaliin saakka!|')
 
 #Ville Minipeli 5
 def zurich():
-    print("zurich")
+    print('Matkaat zurichiin tallettamaan käteisvarojasi')
+    while True:
+        try:
+            money = int(input('Syötä talletettava rahamäärä: '))
+            break
+        except:
+            pass
+
+    bank = query(
+        f'|Haluat tallettaa {money}€. Valitse seuraavista pankeista tili joka mielestäsi on tuottoisin hyvin pitkälle aikavälille|',
+        ['1.Banque Heritage: 2.5% talletuskorko + 3% vuosikorko', '2.Bank SYZ: 1.5% talletuskorko + 4% vuosikorko',
+         '3.Geneva Swiss Bank: 5.5% vuosikorko'],
+        ['1', '2', '3'])
+
+    if bank == '1':
+        print('|Tämän pankin tilillä on paras tuotto lyhyellä aikavälillä.|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '2':
+        print('|Tämän pankin tili on ns. kultainen keskitie lyhyelle ja pitkälle tähtäimelle|')
+        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+    if bank == '3':
+        print('|Tällä tilillä on paras vuosikorko joten se ylittää aikanaan toisten tilien talletuskoron hyödyn|')
+        return print('Valitsit oikean tilin ja sait xxx pistettä!')
+
 
 #Mika minipeli 1 "donalduck"
 def helsinki():
@@ -175,31 +275,48 @@ def helsinki():
 
 #Mika minipeli 2 "carddraw"
 def manchester():
-    while True:
-        print("Vieressä istuva aussi Hugh Jackman on tylistymässä kuoliaaksi ja "
-            "haastaa sinut pelaamaan kortin vetoa, isoin kortti voittakoon!")
-        player1 =random.randint(2,14)
-        player2 =random.randint(2,14)
-        if player1==player2:
-            coin=input(print("Ratkaistaan voittaja kolikolla, kruuna vai klaava?:  "))
-        if coin=="kruuna":
-            coin=1
-        if coin=="klaava":
-            coin=2
-        else:
-            print("Valitse kruuna tai klaava")
-        continue  # ohittaa break komennon jos käyttäjä ei vastaa oikein
-        random2=random.randint(1,2)
-        if coin==random2:
-            print("Arvasit oikein ja voitit!!")
-        else:
-            print("Voihan mielipaha arvasit väärin, hävisit tolle charmantille aussille!")
 
-        if player1>player2:
-            print(f"Hugh Jackmanin kortti: {player1} sinun korttisi {player2}")
-            print(f"Hugh Jackman voitti kortilla: {player1}. Äläkä ala mököttää, tapasit sentään charmantin julkkiksen ^_^  !")
-        else:
-            print(f"Pelaaja (tähän pelaajan nimimerkki) voitti Hugh Jackmanin.\nPalkinnoksi sait wolverinen muoviset raateluterät. Oiva lahja siskon pojalle! Pisteesi kerrotaan kertoimella 1.2!")
+    print("Vieressä istuva aussi Hugh Jackman on tylistymässä kuoliaaksi "
+        "ja haastaa sinut pelaamaan kortin vetoa, isoin kortti voittakoon!")
+    player_hugh = random.randint(2,14)
+    player_player = random.randint(2,14)
+    print("Charmantin aussin kortin arvo on ",player_hugh)
+    print("Sinun korttisi arvo on ", player_player)
+    if player_player < player_hugh:
+        print("Hävisit aussin korteille, et ansainnut pisteitä tästä tehtävästä! Mutta äläpä mutrua, \n"
+              "tapasit sentään charmantin julkkiksen <3")
+    if player_player > player_hugh:
+        print("Voitit korteillasi, sait palkinnoksi semipäheet Wolwerinen raateluhanskat. Oiva lahja siskon pojalle!\n"
+              "Pisteesi kerrotaan 1,2")
+        #kerro pisteet scoreboard
+    if player_player==player_hugh:
+        print("Teillä on samat kortit ja voittaja arvotaan kolikon heitolla")
+        question = query("Valitsetko kruunan vai klaavan?",
+                         ["1: Kruuna",
+                          "2: Klaava"],
+                         ["1", "2"])
+        if question == "1" :
+            coin = 0
+            coin += random.randint(1, 2)
+            if coin == 1 :
+                print("Tuli kruuna")
+                print("Arvasit oikein ja voitit. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
+              "Pisteesi kerrotaan 1,2"
+                      "")
+            else:
+                print(" Tuli klaava ja arvasit väärin. Hugh Jackman voitti. Älä Sure Tapasit sentään ihanan julkkiksen!")
+        if question =="2":
+            coin = 0
+            coin+=random.randint(1,2)
+            if coin == 2:
+                print("Tuli Klaava")
+                print("Arvasit oikein ja voitit tämänkin erän. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
+              "Pisteesi kerrotaan 1,3"
+                      "")
+
+            else:
+                print(
+                    "Tuli kruuna, arvasit väärin! Hugh Jackman voitti. Älä sure, tapasit sentään charmantin aussin <3")
 
 
 #Mika minipeli 3 "words"
@@ -228,6 +345,10 @@ def london():
 #Mika minipeli 5
 def rome():
     print("rome")
+
+#Mallorca minipeli
+def mallorca():
+    print("Mallorca")
 
 #Robbie minipeli 1 "pummi"
 def tirana():

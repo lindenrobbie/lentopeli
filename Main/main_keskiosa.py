@@ -1,5 +1,7 @@
 import db_modules, minigames
 
+#Minipelien sanakirja
+airportgame={1:minigames.london,2:minigames.charles,3:minigames.amsterdam,4:minigames.frankfurt,5:minigames.rome,6:minigames.humberto,7:minigames.mallorca,8:minigames.athens,9:minigames.vienna,10:minigames.zurich,11:minigames.copenhagen,12:minigames.manchester,13:minigames.oslo,14:minigames.brussels,15:minigames.stockholm,16:minigames.warsaw,17:minigames.budapest,18:minigames.helsinki,19:minigames.tirana,20:minigames.keflavik,21:minigames.riga}
 #pelisilmukka, toistuu 10 kertaa
 for i in range(10):
     #haetaan 2 satunnaista lentokenttää, joissa pelaaja ei ole käynyt
@@ -28,10 +30,15 @@ for i in range(10):
     #kaikki minipelit ovat nyt minigames.py tiedostossa. nimet vaihdettu vastaaviksi lentokentiksi (esim helsinki-vantaa kentän minipeli on helsinki() ) selkeyden vuoksi. 
     #osa minipeleistä on vielä tyhjiä ja printtaavat vaan kentän nimen
 
+    # Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
+    minigame = (f'{airportgame[current_pos[0][0]]()}')
+
     #minipelin jälkeen muokataan pelaajan pistemäärää modify_score tai multiply_score funktioilla
     #on parempi tehdä täällä kuin jokaisessa minipelissä erikseen
     #muokataan minipelejä myöhemmin niin, että ne palauttaa pistemäärän / kertoimen
 
-#Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
-    airportgame={2:minigames.words(),3:minigames.bike(),4:minigames.frankfurt(),7:minigames.delgado(),8:minigames.late(),9:minigames.roulette(),10:minigames.bank(),11:minigames.kastrup(),12:minigames.carddraw(),15:minigames.stockholm(),18:minigames.donalduck(),19:minigames.pummi()}
-    minigame=airportgame[id]
+
+#Jatka painamalla enter
+    minigames.enter_continue()
+
+    #print(current_pos[0][0])
