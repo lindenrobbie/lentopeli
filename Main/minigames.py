@@ -496,7 +496,7 @@ def vienna():
                             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
                             break
 
-#Robbie minipeli 3
+#Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
 
     question = query("Mikä vuosi on tunnettu Varsovan kapinan vuodesta?",
@@ -508,7 +508,7 @@ def warsaw():
     else:
         print("Vastasit väärin!\nMenetät 10 pistettä")
 
-#Robbie minipeli 4 (DONE)
+#Robbie minipeli 4 "soutukilpailu" (DONE)
 def budapest():
 
     def paddle_type():
@@ -572,7 +572,7 @@ def budapest():
             print('Rannalla olevat katsojat pudistivat päätään pettyneinä.')
             break
 
-#Robbie minipeli 5 (DONE)
+#Robbie minipeli 5 "vikiinki" (DONE)
 def keflavik():
 
     question = query("\nKuka oli ensimmäinen Islantiin asettunut vikingi?\n",
@@ -584,7 +584,7 @@ def keflavik():
     else:
         print("Vastasit väärin!\nMenetät 10 pistettä")
 
-#Robbie minipeli 6 (DONE)
+#Robbie minipeli 6 "beachball" (DONE)
 def mallorca():
     print(f'\nSaavuit ihanaan mallorcaan missä rannalla paistaa ihanasti aurinko.')
     print('Rannalla kävelyllä astuit epähuomiossa rantapallopeliturnauksen keskelle ja jouduit pelaajaksi kentälle.')
