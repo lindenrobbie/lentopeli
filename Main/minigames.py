@@ -26,6 +26,8 @@ def athens():
     print("Joudut improvisoimaan jotta kerkeät lennolle")
     print("Valitse jokin seuraavista vaihtoehdoista:")
 
+    points=0
+
     choise = query("Olet myöhästymässä lentokoneestasi!\nJoudut improvisoimaan jotta kerkeät lennolle", #kysymys
                    ["1: Juokse turvatarkastuksen", "2: Lainaa golfkärryn näköistä ajoneuvoa", "3: Pyydä apua henkilökunnalta"], #esitettävät vastaukset
                    ["1", "2", "3"]) #vastaukset
@@ -33,20 +35,27 @@ def athens():
     if choise == "1":
         if random.randint(1,10) == 1:
             print ('Pääsit kuin ihmeen kaupalla livahtamaan tarkastuksen läpi.\n\nKerkesit lennolle ja ansaitsit 100 lisäpistettä!')
+            points+=100
         else:
             print ('Turvatarkastus otti sinut kiinni joten myöhästyit lennoltasi.\n\nMenetit 100 pistettä.')
+            points-=100
 
     if choise == "2":
         if random.randint(1, 5) == 1:
             print ('Sait ajoneuvolla kirittyä aikataulusi kuntoon ja kerkesit lennollesi!\n\nAnsaitsit 50 lisäpistettä.')
+            points+=50
         else:
             print ('Törmäsit ajoneuvolla terminaalissa pylvääseen...\n\nMyöhästyit lennoltasi ja menetät 50 pistettä.')
+            points-=50
 
     if choise == "3":
         if random.randint(1,2) == 1:
             print ('Henkilökunta viivästytti lentoa ja kerkesit matkaan mukaan!\n\nAnsaitsit 25 pistettä.')
+            points+=25
         else:
             print ('Henkilökunta ei ymmärtänyt kieltäsi.\n\nMyöhästyit lennoltasi ja menetit 25 pistettä.')
+            points-=25
+    return ["sum", points]
 
 
 
@@ -55,12 +64,15 @@ def frankfurt():
     print ('Vuokraat auton lentokentältä jotta pääset airbnb majoitukseesi')
     print ('Jostain syystä frankfurtissa on tarjolla vain BMW, Mercedes-benz tai Porsche')
 
+    points=0
+
     #kysymys 1
     while True:
         answer = input('Mikä näistä valmistajista on valmistanut ensimmäisenä pidetyn modernin auton?\n\n1. BMW\n2. Mercedes-benz\n3. Porsche\n\nVastauksesi: ')
 
         if answer == '2':
             print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            points+=25
             break
         elif answer == '1' or answer == '3':
             print('Vastasit väärin. Et ansainnut pisteitä')
@@ -74,6 +86,7 @@ def frankfurt():
 
         if answer == '1':
             print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            points+=25
             break
         elif answer == '2' or answer == '3':
             print('Vastasit väärin. Et ansainnut pisteitä')
@@ -87,12 +100,14 @@ def frankfurt():
 
         if answer == '2':
             print('Oikein vastattu! Ansaitsit 25 pistettä.')
+            points+=25
             break
         elif answer == '1' or answer == '3':
             print('Vastasit väärin. Et ansainnut pisteitä')
             break
         else:
             print('Syötä numerovaihtoehto 1,2 tai 3!')
+    return ["sum", points]
 
 
 #Ville Minipeli 3
@@ -137,6 +152,7 @@ def stockholm():
 
     if rounds >= 5:
         print('Pääsit turvallisesti afterski juhliin!')
+        return ["sum", 100]
 
     else:
         print('Et päässyt alas saakka joten et saa pisteitä.')
@@ -201,7 +217,8 @@ def amsterdam():
                 print('pääset hitaasti mäen taluttamalla alas')
                 break
             if walk == 'ei':
-                return print('Kaadut alamäessä ja pyöräsi hajosi')
+                print('Kaadut alamäessä ja pyöräsi hajosi')
+                return ["sum", -50]
 
     if bikechoise == '2':
         print('Lennät epätasaisuuksien yli jousituksesi avulla kisan kärkeen')
@@ -221,6 +238,7 @@ def amsterdam():
         print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
     else:
         print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta\n|Pääsit maaliin saakka!|')
+        return ["sum", 100]
 
 #Ville Minipeli 5
 def zurich():
@@ -240,13 +258,14 @@ def zurich():
 
     if bank == '1':
         print('|Tämän pankin tilillä on paras tuotto lyhyellä aikavälillä.|')
-        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+        print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
     if bank == '2':
         print('|Tämän pankin tili on ns. kultainen keskitie lyhyelle ja pitkälle tähtäimelle|')
         return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
     if bank == '3':
         print('|Tällä tilillä on paras vuosikorko joten se ylittää aikanaan toisten tilien talletuskoron hyödyn|')
-        return print('Valitsit oikean tilin ja sait xxx pistettä!')
+        print('Valitsit oikean tilin ja sait 100 pistettä!')
+        return ["sum", 100]
 
 
 #Mika minipeli 1 "donalduck"
@@ -262,6 +281,7 @@ def helsinki():
                 print("Tehtävä epäonnistui, pillimehu tippui lapsen kädestä maahan ja meni rikki ;(")
             else:
                 print("Saat palkinnoksi perheeltä kiiltävän Aku Ankka pinssin")
+                return ["mult", 1.2]
 
         elif question == "ei":
             print("Etenet seuraavaan paikkaan menettämättä rahaa mutta kuulet surullisen lapsen itkua!!! ")
@@ -303,6 +323,7 @@ def manchester():
                 print("Arvasit oikein ja voitit. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
               "Pisteesi kerrotaan 1,2"
                       "")
+                return ["mult", 1.2]
             else:
                 print(" Tuli klaava ja arvasit väärin. Hugh Jackman voitti. Älä Sure Tapasit sentään ihanan julkkiksen!")
         if question =="2":
@@ -313,6 +334,7 @@ def manchester():
                 print("Arvasit oikein ja voitit tämänkin erän. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
               "Pisteesi kerrotaan 1,3"
                       "")
+                return ["mult", 1.3]
 
             else:
                 print(
@@ -337,18 +359,23 @@ def charles():
         if repeats == 5:
                 print("Et onnistunut voi pöhköliini <3 Pikkuvanha osasi sua paremmin!")
                 break
+        
+    return ["sum", points]
 
 #Mika minipeli 4
 def london():
     print("london")
+    return ["sum", 100]
 
 #Mika minipeli 5
 def rome():
     print("rome")
+    return ["sum", -100]
 
 #Mallorca minipeli
 def mallorca():
     print("Mallorca")
+    return ["sum", 100]
 
 #Robbie minipeli 1 "pummi" (DONE)
 def tirana():
@@ -379,12 +406,14 @@ def tirana():
 
             if win == True:
                 print("")
-                print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut PISTEET sinun kiltteydestäsi.')
+                print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut 100 pistettä sinun kiltteydestäsi.')
+                return ["sum", 100]
                 break
                 #insert a win reward here
 
             elif win == False:
                 print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
+                return["sum", -100]
                 break
 
         else:
@@ -422,7 +451,7 @@ def vienna():
 
         if r == 'En':
             print("")
-            print('Olet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.')
+            print('Olet viisas ja ymmärrät että uhkapelaamisesta aina seuraa jotain pahaa.')
             print('Jatkat matkaa seuraavaan kenttään...')
             break
 
@@ -496,6 +525,9 @@ def vienna():
                             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
                             break
 
+
+    return ["sum", pisteet]
+
 #Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
 
@@ -504,9 +536,11 @@ def warsaw():
                      ["1", "2", "3", "4"])
 
     if question == "2":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
 
 #Robbie minipeli 4 "soutukilpailu" (DONE)
 def budapest():
@@ -523,6 +557,7 @@ def budapest():
 
     teamscore = 0
     opponentscore = 0
+    points = 0
 
     while teamscore < 5 and opponentscore < 5:
         print(f'\nKilpailu on kiivas! Veneesi liitää eteenpäin Tonavalla!')
@@ -564,13 +599,14 @@ def budapest():
         if teamscore == 5:
             print(f'\nUpeat suoritus! Voitit venekilpailun! Woohoo!')
             print('Rannalla olevat ihmiset kannustivat sinua, kun veneesi ylitti maalilinjan!')
-            points =+ 200
+            points += 200
             break
 
         if opponentscore == 5:
             print(f'\nHävisit kilpailun. :(')
             print('Rannalla olevat katsojat pudistivat päätään pettyneinä.')
             break
+    return ["sum", points]
 
 #Robbie minipeli 5 "vikiinki" (DONE)
 def keflavik():
@@ -580,9 +616,11 @@ def keflavik():
                      ["1", "2", "3", "4"])
 
     if question == "3":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
 
 #Robbie minipeli 6 "beachball" (DONE)
 def mallorca():
@@ -594,7 +632,7 @@ def mallorca():
 
     def score(teamscore, opponentscore):
         return print(f'\033[33m{teamscore} - {opponentscore}\033[0m')
-
+    points = 0
     teamscore = 0
     opponentscore = 0
 
@@ -640,13 +678,14 @@ def mallorca():
         if teamscore == 5:
             print(f'\nHienoa! Voitit pelin!')
             print('Joukkuetoverisi kiitti sinua 200:lla pisteellä!')
-            points =+ 200
+            points += 200
             break
 
         if opponentscore == 5:
             print(f'\nHävisit pelin.')
             print('Joukkuetoverisi katsoivat sinua pettyneesti kun menit pilaamaan heidän rantapalloturnausta.')
             break
+    return ["sum", points]
 
 #Elias minipeli 1
 def humberto():
@@ -666,10 +705,11 @@ def copenhagen():
                     ["1: 1925", "2: 1935", "3: 1945", "4: 1955"],
                     ["1", "2", "3", "4"])
     if question == "1":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
 
 #Elias minipeli 3
 def oslo():
@@ -677,12 +717,12 @@ def oslo():
                     ["1: LITP", "2: ASDF", "3: DFKL", "4: ENGM"],
                     ["1", "2", "3", "4"])
     if question == "4":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-        return ["sum", 10]
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
-        return ["sum", -10]
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
 
 #Elias minipeli 4
 def brussels():
@@ -690,18 +730,20 @@ def brussels():
                     ["1: LITP", "2: ASDF", "3: DFKL", "4: ENGM"],
                     ["1", "2", "3", "4"])
     if question == "4":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
-
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
+    
 #Elias minipeli 5
 def riga():
     question = query("Minä vuonna Riigan lentoasema perustettiin?",
                     ["1: 1963", "2: 1973", "3: 1953", "4: 2003"],
                     ["1", "2", "3", "4"])
     if question == "2":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
+        print("Vastasit väärin!\nMenetät 100 pistettä")
+        return ["sum", -100]
