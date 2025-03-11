@@ -21,13 +21,13 @@ def db_command(command):
 
 # muokkaa pelaajan pistemäärää, yhteen- tai vähennyslasku
 def modify_score(id, amount):
-    db_command(f"UPDATE game SET game_playerscore = game_playerscore + {amount} WHERE game_ID={id}")
+    db_command(f"UPDATE game SET game_playerscore=game_playerscore+{str(amount)} WHERE game_ID={str(id)}")
 
 #kertoo käyttäjän pisteet
 def multiply_score(id, amount):
-    score = db_command(f"SELECT game_playerscore FROM game WHERE game_ID={id}")
+    score = db_command(f"SELECT game_playerscore FROM game WHERE game_ID = {id}")
     score = score[0][0] * amount
-    db_command(f"UPDATE game SET game_playerscore = {round(score)} WHERE game_ID={id}")
+    db_command(f"UPDATE game SET game_playerscore = {round(score)} WHERE game_ID = {id}")
 
 
 # arpoo lentokentän, jossa pelaaja ei ole käynyt
@@ -42,7 +42,7 @@ def select_airport():
             break
     return db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
 
-
+#
 # arpoo 2 lentokenttää, jossa pelaaja ei ole käynyt
 # voidaan käyttää tätä lentokentän valitsemiseen
 def choose_airport():
