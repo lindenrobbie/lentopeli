@@ -1,6 +1,6 @@
 #Tässä on main class tiedosto lentopelille
 
-import  db_modules, scoreboard, minigames
+import ascii_art, db_modules, scoreboard, minigames
 
 db_modules.db_command("update airport set airport_visited = False")
 
@@ -44,38 +44,48 @@ for i in range(10):
     #kaikki minipelit ovat nyt minigames.py tiedostossa. nimet vaihdettu vastaaviksi lentokentiksi (esim helsinki-vantaa kentän minipeli on helsinki() ) selkeyden vuoksi. 
     #osa minipeleistä on vielä tyhjiä ja printtaavat vaan kentän nimen
 
-    #Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
+    # Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
     minigame =airportgame[current_pos[0][0]]()
 
     #Luo maxid muuttujan ja antaa sen parametrinä modify_scorelle ja lisää/poistaa pisteet
     maxid = db_modules.db_command("SELECT MAX(game_ID) FROM game")
-
-    if minigame[0] == "sum":
-        db_modules.modify_score(maxid[0][0],minigame[1])
-    else:
-        db_modules.multiply_score(maxid[0][0],minigame[1])
+    db_modules.modify_score(maxid[0][0],minigame[1])
 
     #Tulostaa uusimman tietokannan pelaajan nykyiset pisteet
     points = db_modules.db_command("SELECT game_playerscore FROM game WHERE game_ID = (SELECT MAX(game_ID) FROM game)")
     print(f'Pisteesi: {points[0][0]}')
 
-    #Jatka painamalla enter 
+    #Jatka painamalla enter
     minigames.enter_continue()
 
 
 
 def store_final_score():
+    try:
         # Hakee pelaajadatat game pöydästä
-    player_scores = db_modules.db_command("SELECT game_playername, SUM(game_playerscore) FROM game GROUP BY game_playername")
-        # Tallentaa tiedot scoreboard pöytään
-    for player_name, total_score in player_scores:
-        db_modules.db_command("""
-            INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore)
-            VALUES (%s, %s)
-        """, (player_name, total_score))
+        cursor.execute("SELECT game_playername, SUM(game_playerscore) FROM game GROUP BY game_playername")
+        player_scores = cursor.fetchall()
 
-        #tyhjentää game pöydän rivit (resettaa game pöydän
-    print("\nPisteesi ovat tallentuneet taulukkoon!")
+        # Tallentaa tiedot scoreboard pöytään
+        for player_name, total_score in player_scores:
+            cursor.execute("""
+                INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore)
+                VALUES (%s, %s)
+            """, (player_name, total_score))
+
+        #tyhjentää game pöydän rivit (resettaa game pöydän)
+        cursor.execute("TRUNCATE TABLE game")
+
+        conn.commit()
+        print("\nPisteesi ovat tallentuneet taulukkoon!")
+    except mariadb.Error as e:
+        print(f"Error: {e}") #debuggausta varten
+        conn.rollback()
+    finally:
+        cursor.close()
+        conn.close()
+
+import db_modules
 
 def print_scoreboard():
 
