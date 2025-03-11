@@ -21,7 +21,7 @@ def db_command(command):
 
 # muokkaa pelaajan pistemäärää, yhteen- tai vähennyslasku
 def modify_score(id, amount):
-    db_command(f"UPDATE game SET game_playerscore=game_playerscore+{str(amount)} WHERE game_ID={str(id)}")
+    db_command(f"UPDATE game SET game_playerscore=game_playerscore+{amount} WHERE game_ID={id}")
 
 #kertoo käyttäjän pisteet
 def multiply_score(id, amount):

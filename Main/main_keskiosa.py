@@ -32,11 +32,11 @@ for i in range(10):
     #osa minipeleistä on vielä tyhjiä ja printtaavat vaan kentän nimen
 
     # Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
-    minigame =f'{airportgame[current_pos[0][0]]()}'
+    minigame =airportgame[current_pos[0][0]]()
 
     #Luo maxid muuttujan ja antaa sen parametrinä modify_scorelle ja lisää/poistaa pisteet
     maxid = db_modules.db_command("SELECT MAX(game_ID) FROM game")
-    db_modules.modify_score(1,minigame[1])
+    db_modules.modify_score(maxid[0][0],minigame[1])
 
     #Tulostaa uusimman tietokannan pelaajan nykyiset pisteet
     points = db_modules.db_command("SELECT game_playerscore FROM game WHERE game_ID = (SELECT MAX(game_ID) FROM game)")
