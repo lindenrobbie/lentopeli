@@ -288,10 +288,10 @@ def helsinki():
 
         elif question == "ei":
             print("Etenet seuraavaan paikkaan menettämättä rahaa mutta kuulet surullisen lapsen itkua!!! ")
+            return ["sum", 0]
 
         else:
             print("Annoit virheellisen vastauksen")
-            continue #ohittaa break komennon jos käyttäjä ei vastaa oikein
 
 
 
@@ -605,9 +605,7 @@ def tirana():
     print('Annatko pummille (x määrä) rahaa? Kyllä/En')
 
     while True:
-
-        print("")
-        r = input('')
+        r = input().lower
 
         chance = random.randint(1, 10)
 
@@ -616,25 +614,20 @@ def tirana():
         else:
             win = False
 
-        if r == 'En':
-            print("")
+        if r == 'en':
             print("Jatkat matkaasi seuraavaan lentoon pikaisesti ja näät silmänkulmassasi kun pummi surullisesti tärisee nälästä")
-            break
+            return ["sum", 0]
 
-        elif r == 'Kyllä':
-                #deduct fee to agree to minigame
+        elif r == 'kyllä':
 
             if win == True:
-                print("")
                 print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut 100 pistettä sinun kiltteydestäsi.')
                 return ["sum", 100]
-                break
-                #insert a win reward here
+
 
             elif win == False:
                 print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
                 return["sum", -100]
-                break
 
         else:
             print("Älä ignooraa pummia... :(")
