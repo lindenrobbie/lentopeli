@@ -368,67 +368,76 @@ def charles():
 def london():
     points = 0
     question = query("Laukkusi hajosi kentällä. Haluatko ostaa uuden laukun?",
-                     ["1: Ostat laukun, menetät -20 pistettä mutta osallistut arvontaan",
-                      "2: Haluan koittaa järjestellä tavarat toiseen laukkuun"],
+                     ["1: Ostat laukun, menetät -20 pistettä mutta osallistut arvontaan", "2: Haluan koittaa järjestellä tavarat toiseen laukkuun"],
                      ["1", "2"])
     if question == "1":
-        points += random.randint(1, 6)
-        if points > 3:
-            print("Voitit arvonnasta kultaisen matkalaukun ja kerrot kokonaispisteesi 1,2 kertaisena")
-        else:
-            print(
-                "Menetit -20 pistettä mutta sait itsellesi tyylikkään Cavalierin mustan laukun kromatuilla kahvoilla!")
+        points += random.randint(1,6)
+        if points >3:
+            print ("Voitit arvonnasta kultaisen matkalaukun ja kerrot kokonaispisteesi 1,2 kertaisena")
+            #tähän taulukossa olevat pisteet 1,2 kertaisena
+        else :
+            print("Menetit -20 pistettä mutta sait itsellesi tyylikkään Cavalierin mustan laukun kromatuilla kahvoilla!")
     if question == "2":
-        print("Pienellä palikkatestillä saatat saada tavarat mahtumaan laukkuusi.")
+        question = query("Paljonko on 3 kertaa 3 * 5 / 4 * 100?",
+                         ["1: 1200",
+                          "2: 1125"],
+                         ["1", "2"])
+        if question=="1":
+            print("Väärin, et saa lisäpisteitä ja joudut jättämään hiustenkuivaajan kentäle")
+        if question == "2":
+            print("Oikein, Sait hiustenkuivaajan mahtumaan laukkuun ja ansaitsit +20 pistettä")
+            points +=20
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ",points)
 
-    question = query("Paljonko on 9 kertaa 9 jaettuna 3 kertaa 9?",
-                     ["1: 243",
-                      "2: 234"],
-                     ["1", "2"])
-    if question == "1":
-        print("Vastasit oikein ja ansaitset 10 pistettä")
-        points += 10
-        print("Pisteesi ovat:", points)
-    else:
-        print("Vastasit väärin ja et saa pisteitä")
+        question = query("Onko Pythogoran lause ?",
+                         ["1: a potenssiin kaksi + b potenssiin 2 ja summasta neliöjuuri",
+                          "2: a kertaa a + b kertaa b neliöjuuro summasta"],
+                         ["1", "2"])
+        if question == "2":
+            print("Väärin, et saa lisäpisteitä ja joudut jättämään uimapatjan kentäle")
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
+        if question == "1":
+            print("Oikein, Sait uimapatjan mahtumaan laukkuun ja ansaitsit +30 pistettä")
+            points += 30
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
 
-    if question == "2":
-        print("Pienellä palikkatestillä saatat saada tavarat mahtumaan laukkuusi.")
-    question = query("Lasketaanko suorakulmaisen kolmion hypotenuusan pituus seuraavalla kaavalla?",
-                     ["1: Kateetit potenssiin 2 ja summataan. Summasta otetaan neliöjuuri?",
-                      "2: Kateettit kerrotaan keskenään ja jaetaan kahdella?"],
-                     ["1", "2"])
-    if question == "1":
-        print("Vastasit oikein ja ansaitset 10 pistettä")
-        points += 10
-        print("Pisteesi ovat:", points)
-    else:
-        print("Vastasit väärin ja et saa pisteitä")
+        question = query("Mikä on suorakulmaisen kolmion kulmien kokonais asteet ?",
+                         ["1: a 180",
+                          "2: a 360"],
+                         ["1", "2"])
+        if question == "2":
+            print("Väärin, et saa lisäpisteitä ja joudut jättämään sandaalit kentäle")
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
+        if question == "1":
+            print("Oikein, Sait uimapatjan mahtumaan sandaalit ja ansaitsit +15 pistettä")
+            points += 15
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
 
-    question = query("Paljonko on 3 potenssiin 5?",
-                     ["1: 333",
-                      "2: 243"],
-                     ["1", "2"])
-    if question == "2":
-        print("Vastasit oikein ja ansaitset 10 pistettä")
-        points += 10
-        print("Pisteesi ovat:", points)
-    else:
-        print("Vastasit väärin ja et saa pisteitä")
+        question = query("Kolme ystävää jakaa 48 euron laskun niin, että ensimmäinen maksaa 40 %, toinen 35 % ja kolmas loput. Kuinka paljon kolmas ystävä maksaa??",
+                         ["1:  12€",
+                          "2: 12,40€"],
+                         ["1", "2"])
+        if question == "2":
+            print("Väärin, et saa lisäpisteitä ja joudut jättämään mahtimies patsaan kentäle")
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
+        if question == "1":
+            print("Oikein, Sait mahtimies patsaan  mahtumaan  ja ansaitsit +40 pistettä")
+            points += 40
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
 
-    question = query(
-        "Viimeinen tavara on hankalampi mutta voit koittaa saada tällä lentokentällä ansaitut pisteet kerrattua!\n"
-        "Mikä on luvun 27 kuutiojuuri jaettuna luvun 4 neliöjuurella",
-        ["1: 12?",
-         "2: 16?",
-         "3: 6?"],
-        ["1", "2", "3"])
-    if question == "3":
-        print("Vastasit oikein ja ansaitset kertoimen 5 tällä lentokentällä")
-        points *= 5
-        print("Pisteesi ovat:", points)
-    else:
-        print("Vastasit väärin ja et saa pisteitä")
+        question = query(
+            "Junan A nopeus on 90 km/h, ja se lähtee asemalta klo 12:00. Junan B nopeus on 120 km/h, ja se lähtee samalta asemalta klo 14:00 samaan suuntaan. Mihin aikaan juna B saavuttaa junan A?",
+            ["1:  18:00",
+             "2: 20:00€",
+             "3: 21:00"],
+            ["1", "2", "3"])
+        if question == "3" or question =="1":
+            print("Väärin, et saa lisäpisteitä ja joudut jättämään rantapyyhkeen kentäle")
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
+        if question == "2":
+            print("Oikein, Sait kaikki tavarat   mahtumaan  ja ansaitsit tässä minipelissä kerätyt pisteet 1.6 kertaisena")
+            points =points * 1.6
+            print("Sinulla on nyt pisteitä tästä tehtävästä: ", points)
     return ["sum", points]
 
 #Mika minipeli 5
