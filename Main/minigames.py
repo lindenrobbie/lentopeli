@@ -280,6 +280,8 @@ def helsinki():
         if question == "kyllä":
             if random.randint(1,10) == 1:
                 print("Tehtävä epäonnistui, pillimehu tippui lapsen kädestä maahan ja meni rikki ;(")
+                return ['sum', 0]
+
             else:
                 print("Saat palkinnoksi perheeltä kiiltävän Aku Ankka pinssin")
                 return ["mult", 1.2]
@@ -291,7 +293,6 @@ def helsinki():
             print("Annoit virheellisen vastauksen")
             continue #ohittaa break komennon jos käyttäjä ei vastaa oikein
 
-        break
 
 
 #Mika minipeli 2 "carddraw"
