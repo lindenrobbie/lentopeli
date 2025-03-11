@@ -44,7 +44,7 @@ for i in range(10):
     #kaikki minipelit ovat nyt minigames.py tiedostossa. nimet vaihdettu vastaaviksi lentokentiksi (esim helsinki-vantaa kentän minipeli on helsinki() ) selkeyden vuoksi. 
     #osa minipeleistä on vielä tyhjiä ja printtaavat vaan kentän nimen
 
-    # Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
+    #Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
     minigame =airportgame[current_pos[0][0]]()
 
     #Luo maxid muuttujan ja antaa sen parametrinä modify_scorelle ja lisää/poistaa pisteet
