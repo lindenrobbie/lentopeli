@@ -284,7 +284,7 @@ def helsinki():
 
             else:
                 print("Saat palkinnoksi perheeltä kiiltävän Aku Ankka pinssin")
-                return ["mult", 1.2]
+                return ["sum", 100]
 
         elif question == "ei":
             print("Etenet seuraavaan paikkaan menettämättä rahaa mutta kuulet surullisen lapsen itkua!!! ")
