@@ -1,4 +1,5 @@
-import random
+import random, db_modules
+
 
 #palauttaa käyttäjän syöttämän vastauksen
 #esimerkiksi: query("question", ["1. answer1", "2. answer2", "3. answer3"], ["1", "2", "3"])
@@ -624,112 +625,104 @@ def tirana():
 
 
 #Robbie minipeli 2 "roulette" (DONE)
+
 def vienna():
-    print("")
+    print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
+    print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    def roulette_odds(color):
+    result = db_modules.db_command("""SELECT game_playerscore FROM game ORDER BY game_ID DESC LIMIT 1;""") #PLACEHOLDER
+    points = result [0][0]
+    games = 0
 
+    while True:
+        print("")
+        r = input('').strip()
+
+        if r in ["Kyllä", "En"]:
+            break
+        print("Vastaa Kyllä/En")
+
+    if r == 'En':
+        print("\nOlet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.")
+        points += 50
+        print('+50 Pistettä')
+        print('Jatkat matkaa seuraavaan kenttään...')
+        print(f'Pisteesi ovat nyt: {points}')
+        return
+
+    def roulette_odds():
         black = (0, 48.5)
         red = (48.5, 97)
         green = (97, 100)
-
-        odds = float(random.randint(0, 100))
-
+        odds = random.randint(0, 100)
         if black[0] <= odds < black[1]:
             return "black"
-
         elif red[0] <= odds < red[1]:
             return "red"
-
-        elif green[0] <= odds < green[1]:
+        else:
             return "green"
-    print("")
-    print("Saavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
-    print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    while True:
+    print("\nKasinon työntekijä pyytää sinulta panosta.")
+    print(f"Sinulla on käytössäsi {points} pistettä.")
 
-        print("")
-        r = input('')
+    while points > 0 and games < 3:
+        print("\nJos haluat lopettaa, syötä 'Lopeta'")
+        bet = input('Syötä panos: ').strip()
 
-        if r == 'En':
-            print("")
-            print('Olet viisas ja ymmärrät että uhkapelaamisesta aina seuraa jotain pahaa.')
-            print('Jatkat matkaa seuraavaan kenttään...')
+        if bet.lower() == 'lopeta':
+            print("\nPäätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
             break
 
-        elif r == 'Kyllä':
+        if not bet.isdigit() or int(bet) <= 0:
+            print("Syötä positiivinen numero!")
+            continue
 
-            pisteet = 100 #main.pisteet TÄHÄN PITÄÄ IMPORTTAA MAIN PISTEET
+        bet = int(bet)
+        if bet > points:
+            print("Sinulla ei ole tarpeeksi pisteitä! Syötä oikea määrä pisteitä.")
+            continue
 
-            print("")
-            print("Kasinon työntekijä pyytää sinulta panosta.")
-            print("Paljon laitat panosta?")
-            print(f"Sinulla on käytössäsi {pisteet}")
+        print("\nValitse väri (Kirjoita green/red/black): ")
+        while True:
+            usercolor = input('').strip().lower()
+            if usercolor in ['red', 'green', 'black']:
+                break
+            print("Syötä valiidi väri (green/red/black)")
 
-            print("")
+        color = roulette_odds()
 
-            while True:
-                print("")
-                print("Jos haluat lopettaa syötä 'Lopeta'")
-                bet = input('Syötä panos: ')
+        if usercolor != color:
+            points -= bet
+            print("\nWomp womp... Hävisit :D")
 
-                if bet == 'Lopeta':
-                    print("")
-                    print("Päätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
-                    break
+        elif color == 'green':
+            bet *= 36
+            points += bet
+            print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
 
-                # Validate if the bet is an integer
-                if not bet.isdigit() or bet == 0:
-                    print("Syötä numero!")
-                    continue
+        elif color == 'red' or color == 'black':
+            bet *= 2
+            points += bet
+            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
 
-                bet = int(bet)  # Convert to integer
+        games += 1
 
-                if bet > pisteet:
-                    print("Sinulla ei ole tarpeeksi pisteitä!")
-                    print("Syötä oikea määrä pisteitä")
+        if points <= 0:
+            print("Sinulta loppui pisteet ja hävisit pelin. :|")
+            input('Jatka painamalla enteriä')
+            break
 
-                elif bet <= pisteet:
-                    print("")
-                    print('Valitse väri (Kirjoita green/red/black tai syötä tyhjä kenttä sulkeaksi): ')
+        if games >= 3:
+            print(f'Pisteitä on nyt {points}')
+            break
 
-                    while True:
-
-                        print("")
-                        usercolor = input('').strip().lower()
-
-                        color = roulette_odds('')
-
-                        if usercolor not in ('red', 'green', 'black'):
-                            print("")
-                            print("Syötä valiidi väri (green/red/black)")
-                            continue  # Loops back if color is invalid
-
-                        #lose sequence
-                        if usercolor != color:
-                            pisteet = pisteet - bet
-                            print("")
-                            print('Womp womp... Hävisit :D')
-                            print(f"Pisteitä on nyt {pisteet}")
-                            break
-
-                        #green win sequence
-                        elif color == 'green':
-                            bet = bet * 36
-                            pisteet = pisteet + bet
-                            print(f'Winner winner! Onnittelut! Pisteitä on nyt {pisteet}. Nice')
-                            break
-
-                        #general (black/red) win sequence
-                        elif color == 'black' or 'red':
-                            bet = bet * 2
-                            pisteet = pisteet + bet
-                            print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {pisteet}!")
-                            break
+        print(f'Pisteitä on nyt {points}')
 
 
-    return ["sum", pisteet]
+
+    return ["sum", points]
+
+vienna()
 
 #Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
