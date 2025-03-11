@@ -341,6 +341,7 @@ def manchester():
             else:
                 print(
                     "Tuli kruuna, arvasit väärin! Hugh Jackman voitti. Älä sure, tapasit sentään charmantin aussin <3")
+                return ['sum', 0]
 
 
 #Mika minipeli 3 "words"
