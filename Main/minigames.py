@@ -897,10 +897,12 @@ def humberto():
                     ["1", "2", "3", "4"])
 
     if question == "2":
-        print("Vastasit oikein!\nVoitit 10 pistettä!")
-    
+        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        return ['sum', 100]
+
     else:
-        print("Vastasit väärin!\nMenetät 10 pistettä")
+        print("Vastasit väärin!\nMenetät 25 pistettä")
+        return ['sum', -25]
 
 #Elias minipeli 2
 def copenhagen():
