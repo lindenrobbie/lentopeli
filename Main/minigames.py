@@ -657,7 +657,7 @@ def vienna():
         print('+50 Pistettä')
         print('Jatkat matkaa seuraavaan kenttään...')
         print(f'Pisteesi ovat nyt: {points}')
-        return
+        return ["sum", points]
 
     def roulette_odds():
         black = (0, 48.5)
