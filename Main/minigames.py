@@ -131,7 +131,7 @@ def stockholm():
                 rounds += 1
             else:
                 print('Ajauduit ulos rinteeltä ja kaaduit')
-                break
+                return ['sum', 0]
 
         if obst == 2:
             treeput= input('Tielläsi on kivi. Hyppää painamalla H tai kyyristy painamalla K: ')
@@ -140,7 +140,7 @@ def stockholm():
                 rounds += 1
             else:
                 print('Kaaduit kiveen')
-                break
+                return ['sum', 0]
 
         if obst == 3:
             treeput= input('Edessäsi roikkuu oksa matalalla. Kyyristy painamalla K tai hyppää painamalla H: ')
@@ -149,7 +149,7 @@ def stockholm():
                 rounds += 1
             else:
                 print('Osuit oksaan ja loukkaannuit')
-                break
+                return ['sum', 0]
 
     if rounds >= 5:
         print('Pääsit turvallisesti afterski juhliin!')
