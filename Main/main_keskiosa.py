@@ -10,8 +10,8 @@ for i in range(10):
     airport2 = choice[1]
 
     #pelaaja valitsee lentokentän
-    query = minigames.query("Mihin maahan haluaisit matkustaa?", 
-                    [f"1: {airport1[0][1]}", f"2: {airport2[0][1]}"], 
+    query = minigames.query("Mihin maahan haluaisit matkustaa?",
+                    [f"1: {airport1[0][1]}", f"2: {airport2[0][1]}"],
                     ["1", "2"])
     
     #current_pos sisältää valitun kentän airport_id, airport_name ja airport_visited
@@ -23,6 +23,7 @@ for i in range(10):
     
 
     #tähän väliin vois lisätä komentoja esim. pisteiden tarkistamiseen
+
     #sitten jatkaa painamalla entteriä
 
     #seuraavaksi alkaa minipeli
@@ -31,12 +32,15 @@ for i in range(10):
     #osa minipeleistä on vielä tyhjiä ja printtaavat vaan kentän nimen
 
     # Käyttää sanakirjaa laukaistakseen jokaiseen kenttään liitetyn minipelin
-    minigame = (f'{airportgame[current_pos[0][0]]()}')
+    minigame =f'{airportgame[current_pos[0][0]]()}'
 
-    #minipelin jälkeen muokataan pelaajan pistemäärää modify_score tai multiply_score funktioilla
-    #on parempi tehdä täällä kuin jokaisessa minipelissä erikseen
-    #muokataan minipelejä myöhemmin niin, että ne palauttaa pistemäärän / kertoimen
+    #Luo maxid muuttujan ja antaa sen parametrinä modify_scorelle ja lisää/poistaa pisteet
+    maxid = db_modules.db_command("SELECT MAX(game_ID) FROM game")
+    db_modules.modify_score(1,minigame[1])
 
+    #Tulostaa uusimman tietokannan pelaajan nykyiset pisteet
+    points = db_modules.db_command("SELECT game_playerscore FROM game WHERE game_ID = (SELECT MAX(game_ID) FROM game)")
+    print(f'Pisteesi: {points[0][0]}')
 
 #Jatka painamalla enter
     minigames.enter_continue()
