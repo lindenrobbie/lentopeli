@@ -328,6 +328,8 @@ def manchester():
                 return ["mult", 1.2]
             else:
                 print(" Tuli klaava ja arvasit väärin. Hugh Jackman voitti. Älä Sure Tapasit sentään ihanan julkkiksen!")
+                return ['sum', 0]
+
         if question =="2":
             coin = 0
             coin+=random.randint(1,2)
