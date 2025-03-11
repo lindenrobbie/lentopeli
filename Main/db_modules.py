@@ -42,7 +42,7 @@ def select_airport():
             break
     return db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
 
-
+#
 # arpoo 2 lentokenttää, jossa pelaaja ei ole käynyt
 # voidaan käyttää tätä lentokentän valitsemiseen
 def choose_airport():
