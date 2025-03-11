@@ -363,14 +363,156 @@ def charles():
     return ["sum", points]
 
 #Mika minipeli 4
+
 def london():
-    print("london")
-    return ["sum", 100]
+    points = 0
+    question = query("Laukkusi hajosi kentällä. Haluatko ostaa uuden laukun?",
+                     ["1: Ostat laukun, menetät -20 pistettä mutta osallistut arvontaan",
+                      "2: Haluan koittaa järjestellä tavarat toiseen laukkuun"],
+                     ["1", "2"])
+    if question == "1":
+        points += random.randint(1, 6)
+        if points > 3:
+            print("Voitit arvonnasta kultaisen matkalaukun ja kerrot kokonaispisteesi 1,2 kertaisena")
+        else:
+            print(
+                "Menetit -20 pistettä mutta sait itsellesi tyylikkään Cavalierin mustan laukun kromatuilla kahvoilla!")
+    if question == "2":
+        print("Pienellä palikkatestillä saatat saada tavarat mahtumaan laukkuusi.")
+
+    question = query("Paljonko on 9 kertaa 9 jaettuna 3 kertaa 9?",
+                     ["1: 243",
+                      "2: 234"],
+                     ["1", "2"])
+    if question == "1":
+        print("Vastasit oikein ja ansaitset 10 pistettä")
+        points += 10
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja et saa pisteitä")
+
+    if question == "2":
+        print("Pienellä palikkatestillä saatat saada tavarat mahtumaan laukkuusi.")
+    question = query("Lasketaanko suorakulmaisen kolmion hypotenuusan pituus seuraavalla kaavalla?",
+                     ["1: Kateetit potenssiin 2 ja summataan. Summasta otetaan neliöjuuri?",
+                      "2: Kateettit kerrotaan keskenään ja jaetaan kahdella?"],
+                     ["1", "2"])
+    if question == "1":
+        print("Vastasit oikein ja ansaitset 10 pistettä")
+        points += 10
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja et saa pisteitä")
+
+    question = query("Paljonko on 3 potenssiin 5?",
+                     ["1: 333",
+                      "2: 243"],
+                     ["1", "2"])
+    if question == "2":
+        print("Vastasit oikein ja ansaitset 10 pistettä")
+        points += 10
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja et saa pisteitä")
+
+    question = query(
+        "Viimeinen tavara on hankalampi mutta voit koittaa saada tällä lentokentällä ansaitut pisteet kerrattua!\n"
+        "Mikä on luvun 27 kuutiojuuri jaettuna luvun 4 neliöjuurella",
+        ["1: 12?",
+         "2: 16?",
+         "3: 6?"],
+        ["1", "2", "3"])
+    if question == "3":
+        print("Vastasit oikein ja ansaitset kertoimen 5 tällä lentokentällä")
+        points *= 5
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja et saa pisteitä")
+    return ["sum", points]
 
 #Mika minipeli 5
 def rome():
-    print("rome")
-    return ["sum", -100]
+    points = 0
+    question = query("Mikä on Da Vincin koko nimi ?",
+                     ["1: Leonardo di ser Piero da Vinci", "2: Leonardo Alfred da Vinci",
+                      "CC: Leonardo si Pedro da Vinci"],
+                     ["1", "2", "3"])
+    if question == "1":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+    question = query("Minkä ikäisenä Da vinci kuoli ?",
+                     ["1: 52 vuotiaana", "2: 73 vuotiaana", "3: 67 vuotiaana"],
+                     ["1", "2", "3"])
+    if question == "3":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+
+    question = query("Mikä on Rooman jalkapallojoukkuuen virallinen nimi ?",
+                     ["1: As Roma", "2: Fc Roma", "3: 67 F.C Roma"],
+                     ["1", "2", "3"])
+    if question == "1":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+
+    question = query("Missä taideteos Mona Lisa on näytillä ?",
+                     ["1: Louvre in paris", "2: International museum of Roma", "3: Brittish Museum"],
+                     ["1", "2", "3"])
+    if question == "1":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+
+    question = query("Paljonko on roomalainen luku MMXXV ?",
+                     ["1: 0022", "2: 2210", "3: 2025"],
+                     ["1", "2", "3"])
+    if question == "3":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+
+    question = query("Paljonko on roomalainen luku MMXXV ?",
+                     ["1: 0022", "2: 2210", "3: 2025"],
+                     ["1", "2", "3"])
+    if question == "3":
+        print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    else:
+        print("Vastasit väärin ja menetät -5 pistettä!")
+        points -= 5
+        print("Pisteesi ovat:", points)
+
+    question = query("Kuuluuko ananas pizzaan?",
+                     ["1: Hell yeah!", "2: Ei todellakaan", "3: Ihan sama kun pizza!"],
+                     ["1", "2", "3"])
+    if question == "3" or question == "2" or question == "1":
+        print("Sait vastauksen oikein, mielipiteistä ei voi kiistellä ja ansaitset +15 pistettä!")
+        points += 15
+        print("Pisteesi ovat:", points)
+    return ["sum", points]
 
 #Mallorca minipeli
 def mallorca():
