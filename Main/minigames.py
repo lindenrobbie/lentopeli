@@ -722,8 +722,6 @@ def vienna():
 
     return ["sum", points]
 
-vienna()
-
 #Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
 
