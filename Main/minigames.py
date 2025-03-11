@@ -307,9 +307,12 @@ def manchester():
     if player_player < player_hugh:
         print("Hävisit aussin korteille, et ansainnut pisteitä tästä tehtävästä! Mutta äläpä mutrua, \n"
               "tapasit sentään charmantin julkkiksen <3")
+        return ['sum', 0]
+
     if player_player > player_hugh:
         print("Voitit korteillasi, sait palkinnoksi semipäheet Wolwerinen raateluhanskat. Oiva lahja siskon pojalle!\n"
               "Pisteesi kerrotaan 1,2")
+        return ['mult', 1.2]
         #kerro pisteet scoreboard
     if player_player==player_hugh:
         print("Teillä on samat kortit ja voittaja arvotaan kolikon heitolla")
@@ -336,9 +339,9 @@ def manchester():
             if coin == 2:
                 print("Tuli Klaava")
                 print("Arvasit oikein ja voitit tämänkin erän. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
-              "Pisteesi kerrotaan 1,3"
+              "Pisteesi kerrotaan 1,2"
                       "")
-                return ["mult", 1.3]
+                return ["mult", 1.2]
 
             else:
                 print(
