@@ -686,7 +686,6 @@ def oslo():
 
 #Elias minipeli 4
 def brussels():
-def oslo():
     question = query("Mikä lentoyhtiö liikennöi suoria lentoja Brysselistä New Yorkiin?",
                     ["1: LITP", "2: ASDF", "3: DFKL", "4: ENGM"],
                     ["1", "2", "3", "4"])
@@ -698,4 +697,11 @@ def oslo():
 
 #Elias minipeli 5
 def riga():
-    print("riga")
+    question = query("Minä vuonna Riigan lentoasema perustettiin?",
+                    ["1: 1963", "2: 1973", "3: 1953", "4: 2003"],
+                    ["1", "2", "3", "4"])
+    if question == "2":
+        print("Vastasit oikein!\nVoitit 10 pistettä!")
+    
+    else:
+        print("Vastasit väärin!\nMenetät 10 pistettä")
