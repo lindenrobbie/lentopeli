@@ -1,6 +1,6 @@
 #Tässä on main class tiedosto lentopelille
 
-import ascii_art, db_modules, scoreboard
+import ascii_art, db_modules, scoreboard, minigames
 
 db_modules.db_command("update airport set airport_visited = False")
 
@@ -61,31 +61,17 @@ for i in range(10):
 
 
 def store_final_score():
-    try:
         # Hakee pelaajadatat game pöydästä
-        cursor.execute("SELECT game_playername, SUM(game_playerscore) FROM game GROUP BY game_playername")
-        player_scores = cursor.fetchall()
-
+    player_scores = db_modules.db_command("SELECT game_playername, SUM(game_playerscore) FROM game GROUP BY game_playername")
         # Tallentaa tiedot scoreboard pöytään
-        for player_name, total_score in player_scores:
-            cursor.execute("""
-                INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore)
-                VALUES (%s, %s)
-            """, (player_name, total_score))
+    for player_name, total_score in player_scores:
+        db_modules.db_command("""
+            INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore)
+            VALUES (%s, %s)
+        """, (player_name, total_score))
 
-        #tyhjentää game pöydän rivit (resettaa game pöydän)
-        cursor.execute("TRUNCATE TABLE game")
-
-        conn.commit()
-        print("\nPisteesi ovat tallentuneet taulukkoon!")
-    except mariadb.Error as e:
-        print(f"Error: {e}") #debuggausta varten
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
-
-import db_modules
+        #tyhjentää game pöydän rivit (resettaa game pöydän
+    print("\nPisteesi ovat tallentuneet taulukkoon!")
 
 def print_scoreboard():
 
