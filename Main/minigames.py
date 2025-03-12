@@ -237,6 +237,7 @@ def amsterdam():
 
     if bikechoise == '3':
         print('Jalkajarru ei ole riittävän tehokas ja törmäät kaiteeseen')
+        return ["sum", 0]
     else:
         print('Levyjarrut hidastivat sinua tarpeeksi ja selvisit mutkasta\n|Pääsit maaliin saakka!|')
         return ["sum", 100]
@@ -607,8 +608,9 @@ def tirana():
     print('Annatko pummille (x määrä) rahaa? Kyllä/En')
 
     while True:
-        r = input().lower
-
+        r = input()
+        r = r.lower()
+        print (r)
         chance = random.randint(1, 10)
 
         if chance in range(1, 3):
@@ -620,19 +622,16 @@ def tirana():
             print("Jatkat matkaasi seuraavaan lentoon pikaisesti ja näät silmänkulmassasi kun pummi surullisesti tärisee nälästä")
             return ["sum", 0]
 
-        elif r == 'kyllä':
+        if r == 'kyllä':
 
             if win == True:
                 print(f'Pummi oli sosiaalisen median vaikuttaja ja hän palkitsi sinut 100 pistettä sinun kiltteydestäsi.')
                 return ["sum", 100]
 
 
-            elif win == False:
+            if win == False:
                 print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
                 return["sum", -100]
-
-        else:
-            print("Älä ignooraa pummia... :(")
 
 
 #Robbie minipeli 2 "roulette" (DONE)
