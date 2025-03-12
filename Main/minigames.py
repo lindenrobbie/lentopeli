@@ -6,7 +6,7 @@ import random, db_modules
 #palautaa 1, 2 tai 3 merkkijonon
 def query(question: str, options: list, answers: list):
     print(question)
-    print("Valitse jokin seuraavista vaihtoehdoista: ", end="")
+    print("Valitse jokin seuraavista vaihtoehdoista: \n", end="")
     for i in options:
         print(i + " / ", end="")
     print()
