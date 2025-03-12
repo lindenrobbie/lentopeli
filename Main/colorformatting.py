@@ -12,3 +12,4 @@ Default	    \033[39m"""
 
 print("\033[31mTässä on esimerkki punasesta\033[39m ja tässä se vaihtuu takaisin defaulttiin")
 
+#eli alkaa jollain värillä esim \033[31m (punanen) ja \033[39m (default väri)
