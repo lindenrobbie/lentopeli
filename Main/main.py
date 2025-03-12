@@ -26,7 +26,7 @@ for i in range(10):
     #print(airport2)
     #pelaaja valitsee lentokentän
     query = minigames.nodashquery("\nMihin maahan haluaisit matkustaa?",
-                    [f"\n\033[36m1\033[39m: {airport1[0][1]}", f"\n\033[36m2\033[39m: {airport2[0][1]}"],
+                    [f"\n\033[36m1\033[39m: {airport1[0][1]}", f"\n\033[36m2\033[39m: {airport2[0][1]}\n"],
                     ["1", "2"])
     
     #current_pos sisältää valitun kentän airport_id, airport_name ja airport_visited
