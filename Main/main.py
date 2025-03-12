@@ -61,21 +61,12 @@ for i in range(10):
 
 
 def store_final_score():
-    try:
-        # Hakee pelaajadatat game pöydästä
-        player_scores = db_modules.db_command("SELECT game_playername, SUM(game_playerscore) FROM game GROUP BY game_playername")
 
-        # Tallentaa tiedot scoreboard pöytään
-        for player_name, total_score in player_scores:
-            db_modules.db_command(""" 
-                INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore)
-                VALUES (%s, %s)
-            """, (player_name, total_score))
+    playerresult = db_modules.db_command("SELECT game_playername, game_playerscore FROM game WHERE game_ID = (SELECT MAX(game_ID) FROM game)")
 
-        #tyhjentää game pöydän rivit (resettaa game pöydän)
-        db_modules.db_command("TRUNCATE TABLE game")
+    playername, playerscore = playerresult[0]
 
-        print("\nPisteesi ovat tallentuneet taulukkoon!")
+    db_modules.db_command(f"INSERT INTO scoreboard (scoreboard_playername, scoreboard_finalscore) VALUES ('{playername}', {playerscore})")
 
 
 import db_modules
