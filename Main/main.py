@@ -10,7 +10,7 @@ command = "SELECT game_playername FROM game WHERE game_ID = (SELECT MAX(game_ID)
 db_modules.db_command(command)
 result = db_modules.db_command(command)
 for i in result:
-    print ("Tervetuloa pelaamaan Amazing flight Race peliä!:",i)
+    print ("\nTervetuloa pelaamaan Amazing flight Race peliä ",i)
 
 
 #Minipelien sanakirja
@@ -25,8 +25,8 @@ for i in range(10):
     print(airport1)
     print(airport2)
     #pelaaja valitsee lentokentän
-    query = minigames.query("Mihin maahan haluaisit matkustaa?",
-                    [f"1: {airport1[0][1]}", f"2: {airport2[0][1]}"],
+    query = minigames.query("\nMihin maahan haluaisit matkustaa?",
+                    [f"\n1: {airport1[0][1]}", f"\n2: {airport2[0][1]}"],
                     ["1", "2"])
     
     #current_pos sisältää valitun kentän airport_id, airport_name ja airport_visited
