@@ -313,8 +313,8 @@ def manchester():
 
     if player_player > player_hugh:
         print("Voitit korteillasi, sait palkinnoksi semipäheet Wolwerinen raateluhanskat. Oiva lahja siskon pojalle!\n"
-              "Pisteesi kerrotaan 1,2")
-        return ['mult', 1.2]
+              "Saat 200 pistettä")
+        return ['sum', 200]
         #kerro pisteet scoreboard
     if player_player==player_hugh:
         print("Teillä on samat kortit ja voittaja arvotaan kolikon heitolla")
@@ -328,9 +328,9 @@ def manchester():
             if coin == 1 :
                 print("Tuli kruuna")
                 print("Arvasit oikein ja voitit. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
-              "Pisteesi kerrotaan 1,2"
+              "Saat palkinnoksi 200 pistettä"
                       "")
-                return ["mult", 1.2]
+                return ["sum", 200]
             else:
                 print(" Tuli klaava ja arvasit väärin. Hugh Jackman voitti. Älä Sure Tapasit sentään ihanan julkkiksen!")
                 return ['sum', 0]
@@ -341,9 +341,9 @@ def manchester():
             if coin == 2:
                 print("Tuli Klaava")
                 print("Arvasit oikein ja voitit tämänkin erän. Sait palkinnoksi semipäheet Wolwerinen raateluhanskat.\nOiva lahja siskon pojalle!"
-              "Pisteesi kerrotaan 1,2"
+              "Saat palkinnoksi 200 pistettä"
                       "")
-                return ["mult", 1.2]
+                return ["sum", 200]
 
             else:
                 print(
@@ -454,7 +454,7 @@ def rome():
     points = 0
     question = query("Mikä on Da Vincin koko nimi ?",
                      ["1: Leonardo di ser Piero da Vinci", "2: Leonardo Alfred da Vinci",
-                      "CC: Leonardo si Pedro da Vinci"],
+                      "3: Leonardo si Pedro da Vinci"],
                      ["1", "2", "3"])
     if question == "1":
         print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
