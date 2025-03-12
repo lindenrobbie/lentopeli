@@ -7,4 +7,6 @@ Peli käyttää MariaDB tietokantaohjelmaa jossa on Metropolia Ohjelmisto 1 Rela
 
 Ville Ahola, Elias Lee, Robbie Linden, Mika Poikonen
 
-test
+Vaatimukset:
+    - MariaDB Connector Python
+    - Pygame
