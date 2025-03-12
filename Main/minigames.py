@@ -633,7 +633,6 @@ def tirana():
                 print("Pummi kiitti nauraen ja hyväksikäytti sinisilmäistä anteliaisuuttasi.")
                 return["sum", -100]
 
-tirana()
 
 #Robbie minipeli 2 "roulette" (DONE)
 
