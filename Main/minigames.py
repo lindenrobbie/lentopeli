@@ -952,3 +952,19 @@ def riga():
     else:
         print("Vastasit väärin!\nMenetät 100 pistettä")
         return ["sum", -100]
+
+def nodashquery(question: str, options: list, answers: list):
+    print(question)
+    print("Valitse jokin seuraavista vaihtoehdoista: \n", end="")
+    for i in options:
+        print(i + "", end="")
+    print()
+
+    while True:
+        input_answer = input()
+
+        for i in answers:
+            if input_answer == i:
+                return input_answer
+
+        print("Anna validi vastaus!")
