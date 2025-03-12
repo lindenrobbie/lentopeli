@@ -22,8 +22,8 @@ for i in range(10):
     choice = db_modules.choose_airport() 
     airport1 = choice[0]
     airport2 = choice[1]
-    print(airport1)
-    print(airport2)
+    #print(airport1)
+    #print(airport2)
     #pelaaja valitsee lentokentän
     query = minigames.query("\nMihin maahan haluaisit matkustaa?",
                     [f"\n1: {airport1[0][1]}", f"\n2: {airport2[0][1]}"],
