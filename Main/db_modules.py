@@ -56,7 +56,7 @@ def choose_airport():
 
 # lisää pelaajan tietokantaan, aloittaa 1000 pisteellä
 def add_player():
-    name = input("\nSyötä nimi: \n")
+    name = input("\nSyötä nimi: ")
     db_command(f"INSERT INTO game (game_playername, game_playerscore, game_playerpos) VALUES ('{name}', 1000, 1)")
 
 def travel_to(airport_id, game_id):
