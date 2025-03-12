@@ -53,7 +53,8 @@ for i in range(10):
 
     #Tulostaa uusimman tietokannan pelaajan nykyiset pisteet
     points = db_modules.db_command("SELECT game_playerscore FROM game WHERE game_ID = (SELECT MAX(game_ID) FROM game)")
-    print(f'Pisteesi: {points[0][0]}')
+    points = points[0][0]
+    print(f'Pisteesi: {points}')
 
     #Jatka painamalla enter
     minigames.enter_continue()

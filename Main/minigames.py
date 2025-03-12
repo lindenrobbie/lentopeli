@@ -706,19 +706,17 @@ def vienna():
             points -= bet
             print(f"DEBUG: After deduction, points = {points}")
             print("\nWomp womp... Hävisit :D")
-            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore - {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
+            return ["sum", points]
 
         elif color == 'green':
             bet *= 36
-            points += bet
             print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
-            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore + {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
+            return ["sum", points]
 
         elif color == 'red' or color == 'black':
             bet *= 2
-            points += bet
             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
-            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore + {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
+            return ["sum", points]
 
         games += 1
 
