@@ -260,9 +260,11 @@ def zurich():
     if bank == '1':
         print('|Tämän pankin tilillä on paras tuotto lyhyellä aikavälillä.|')
         print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+        return ["sum", 0]
     if bank == '2':
         print('|Tämän pankin tili on ns. kultainen keskitie lyhyelle ja pitkälle tähtäimelle|')
-        return print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+        print('Tili ei kuitenkaan ole paras pitkälle tähtäimelle')
+        return ["sum", 0]
     if bank == '3':
         print('|Tällä tilillä on paras vuosikorko joten se ylittää aikanaan toisten tilien talletuskoron hyödyn|')
         print('Valitsit oikean tilin ja sait 100 pistettä!')
