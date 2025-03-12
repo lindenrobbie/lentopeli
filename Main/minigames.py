@@ -642,7 +642,7 @@ def vienna():
     print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
     result = db_modules.db_command("""SELECT game_playerscore FROM game ORDER BY game_ID DESC LIMIT 1;""") #PLACEHOLDER
-    points = result [0][0]
+    points = int(result [0][0])
     games = 0
 
     while True:
@@ -682,7 +682,7 @@ def vienna():
 
         if bet.lower() == 'lopeta':
             print("\nPäätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
-            break
+            return ["sum", points]
 
         if not bet.isdigit() or int(bet) <= 0:
             print("Syötä positiivinen numero!")
@@ -703,18 +703,23 @@ def vienna():
         color = roulette_odds()
 
         if usercolor != color:
+            print(f"DEBUG: Before deduction, points = {points}")
             points -= bet
+            print(f"DEBUG: After deduction, points = {points}")
             print("\nWomp womp... Hävisit :D")
+            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore - {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
 
         elif color == 'green':
             bet *= 36
             points += bet
             print(f'Winner winner! Onnittelut! Pisteitä on nyt {points}. Nice')
+            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore + {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
 
         elif color == 'red' or color == 'black':
             bet *= 2
             points += bet
             print(f"Hienoa! Voitit tuplamäärän! Pisteitä on nyt {points}!")
+            db_modules.db_command(f"UPDATE game SET game_playerscore = game_playerscore + {bet} WHERE game_ID = (SELECT MAX(game_ID) FROM game);")
 
         games += 1
 
