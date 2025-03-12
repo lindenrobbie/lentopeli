@@ -34,12 +34,9 @@ def multiply_score(id, amount):
 def select_airport():
     while True:
         i = random.randint(1, 21)
-        try:
-            db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
-        except:
-            pass
-        else:
+        if len(db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")) > 0:
             break
+          
     return db_command(f"SELECT * FROM airport WHERE airport_ID = {i} AND airport_visited = FALSE")
 
 #
