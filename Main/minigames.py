@@ -681,7 +681,7 @@ def vienna():
 
         if bet.lower() == 'lopeta':
             print("\nPäätit olla fiksu ja lopettaa ennen kuin menetät kaikki rahat.")
-            break
+            return ["sum", points]
 
         if not bet.isdigit() or int(bet) <= 0:
             print("Syötä positiivinen numero!")
@@ -704,7 +704,6 @@ def vienna():
         if usercolor != color:
             points -= bet
             print("\nWomp womp... Hävisit :D")
-            points /= 1.2
 
         elif color == 'green':
             bet *= 36
@@ -730,7 +729,7 @@ def vienna():
         print(f'Pisteitä on nyt {points}')
 
 
-    return ["sum", round(points)]
+    return ["sum", points]
 
 #Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
