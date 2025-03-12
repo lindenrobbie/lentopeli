@@ -454,7 +454,7 @@ def rome():
     points = 0
     question = query("Mikä on Da Vincin koko nimi ?",
                      ["1: Leonardo di ser Piero da Vinci", "2: Leonardo Alfred da Vinci",
-                      "CC: Leonardo si Pedro da Vinci"],
+                      "3: Leonardo si Pedro da Vinci"],
                      ["1", "2", "3"])
     if question == "1":
         print("Sait vastauksen oikein ja ansaitset +15 pistettä!")
