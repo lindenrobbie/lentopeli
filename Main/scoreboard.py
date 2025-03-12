@@ -7,7 +7,7 @@ def print_scoreboard():
     results = db_modules.db_command(command)
 
     print("")
-    print("===== Leaderboard =====")
+    print("===== \033[93mPISTETAULUKKO\033[0m =====")
 
     if results:
 
@@ -15,10 +15,9 @@ def print_scoreboard():
 
         rank = 1
 
-        for row in results:
-            name, score = row
-            print(f'{rank} | {name} | {score}')
-            rank += 1
+        for rank, (name, score) in enumerate(results, start=1):
+            medal = {1: "\033[33m🥇 ", 2: "\033[37m🥈 ", 3: "\033[35m🥉 "}.get(rank, "   ")
+            print(f"{medal}{rank}. {name} - {score} points\033[0m")
     else:
         print("")
         print("Näyttää tyhjältä...")
