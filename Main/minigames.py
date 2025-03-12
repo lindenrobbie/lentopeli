@@ -6,7 +6,7 @@ import random, db_modules
 #palautaa 1, 2 tai 3 merkkijonon
 def query(question: str, options: list, answers: list):
     print(question)
-    print("Valitse jokin seuraavista vaihtoehdoista: \n", end="")
+    print("Valitse jokin seuraavista vaihtoehdoista: \n\n", end="")
     for i in options:
         print(i + " / ", end="")
     print()
@@ -943,19 +943,19 @@ def brussels():
     
 #Elias minipeli 5
 def riga():
-    question = query("Minä vuonna Riigan lentoasema perustettiin?",
-                    ["1: 1963", "2: 1973", "3: 1953", "4: 2003"],
+    question = nodashquery("\nMinä vuonna Riigan lentoasema perustettiin?",
+                    ["\033[36m1\033[39m: 1963\n", "\033[36m2\033[39m: 1973\n", "\033[36m3\033[39m: 1953\n", "\033[36m4\033[39m: 2003\n"],
                     ["1", "2", "3", "4"])
     if question == "2":
-        print("Vastasit oikein!\nVoitit 100 pistettä!")
+        print("\nVastasit oikein!\nVoitit 100 pistettä!")
         return ["sum", 100]
     else:
-        print("Vastasit väärin!\nMenetät 100 pistettä")
+        print("\nVastasit väärin!\nMenetät 100 pistettä")
         return ["sum", -100]
 
 def nodashquery(question: str, options: list, answers: list):
     print(question)
-    print("Valitse jokin seuraavista vaihtoehdoista: \n", end="")
+    print("Valitse jokin seuraavista vaihtoehdoista: \n\n", end="")
     for i in options:
         print(i + "", end="")
     print()
