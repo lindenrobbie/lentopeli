@@ -76,12 +76,7 @@ def store_final_score():
         db_modules.db_command("TRUNCATE TABLE game")
 
         print("\nPisteesi ovat tallentuneet taulukkoon!")
-    except mariadb.Error as e:
-        print(f"Error: {e}")  # debuggausta varten
-        conn.rollback()
-    finally:
-        cursor.close()
-        conn.close()
+
 
 import db_modules
 
@@ -111,4 +106,3 @@ store_final_score()
 
 print_scoreboard()
 
-gamemusic()
