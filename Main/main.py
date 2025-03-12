@@ -10,7 +10,7 @@ command = "SELECT game_playername FROM game WHERE game_ID = (SELECT MAX(game_ID)
 db_modules.db_command(command)
 result = db_modules.db_command(command)
 for i in result:
-    print ("\nTervetuloa pelaamaan Amazing flight Race peliä ",i)
+    print ("\nTervetuloa pelaamaan Amazing flight Race peliä",i[0],"!")
 
 
 #Minipelien sanakirja
