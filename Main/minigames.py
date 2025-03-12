@@ -313,8 +313,8 @@ def manchester():
 
     if player_player > player_hugh:
         print("Voitit korteillasi, sait palkinnoksi semipäheet Wolwerinen raateluhanskat. Oiva lahja siskon pojalle!\n"
-              "Pisteesi kerrotaan 1,2")
-        return ['mult', 1.2]
+              "Saat 200 pistettä")
+        return ['sum', 200]
         #kerro pisteet scoreboard
     if player_player==player_hugh:
         print("Teillä on samat kortit ja voittaja arvotaan kolikon heitolla")
