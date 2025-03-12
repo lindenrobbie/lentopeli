@@ -641,25 +641,24 @@ def vienna():
     print("\nSaavuit suureen Casino Wien:iin ja edessäsi on rulettipöytä.")
     print("Pöydässä on tilaa pelata, liitytkö joukkoon? Kyllä/En")
 
-    result = db_modules.db_command("""SELECT game_playerscore FROM game ORDER BY game_ID DESC LIMIT 1;""") #PLACEHOLDER
-    points = result [0][0]
+    points = 0
     games = 0
 
     while True:
-        print("")
-        r = input('').strip()
+        r = input().lower()
 
-        if r in ["Kyllä", "En"]:
+        if r in ["kyllä", "en"]:
             break
         print("Vastaa Kyllä/En")
 
-    if r == 'En':
+    if r == 'en':
         print("\nOlet viisas ja ymmärrät että uhkapelaamisesta 𝐚𝐢𝐧𝐚 seuraa jotain pahaa.")
         points += 50
         print('+50 Pistettä')
         print('Jatkat matkaa seuraavaan kenttään...')
         print(f'Pisteesi ovat nyt: {points}')
         return ["sum", points]
+        
 
     def roulette_odds():
         black = (0, 48.5)
@@ -695,7 +694,7 @@ def vienna():
 
         print("\nValitse väri (Kirjoita green/red/black): ")
         while True:
-            usercolor = input('').strip().lower()
+            usercolor = input().strip().lower()
             if usercolor in ['red', 'green', 'black']:
                 break
             print("Syötä valiidi väri (green/red/black)")
@@ -705,6 +704,7 @@ def vienna():
         if usercolor != color:
             points -= bet
             print("\nWomp womp... Hävisit :D")
+            points /= 1.2
 
         elif color == 'green':
             bet *= 36
@@ -730,8 +730,7 @@ def vienna():
         print(f'Pisteitä on nyt {points}')
 
 
-
-    return ["sum", points]
+    return ["sum", round(points)]
 
 #Robbie minipeli 3 "kapina" (DONE)
 def warsaw():
